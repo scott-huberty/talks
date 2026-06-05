@@ -1,0 +1,42 @@
+---
+project:
+  type: website
+
+execute:
+  cache: true
+
+format:
+  html:
+    theme: darkly
+  revealjs:
+    auto-play-media: true
+    auto-stretch: false
+    callout-appearance: simple
+    code-copy: true
+    filters:
+      - _filters/slugify.lua
+    footer: "{{< meta title >}}"
+    hash-type: number
+    history: false
+    include-after-body: _assets/html/hide-title-slide.html
+    incremental: true
+    link-external-icon: true
+    mermaid:
+      theme: dark
+    menu:
+      hideMissingTitles: true
+      useTextContentForMissingTitles: false
+    mobile-view-distance: 10
+    slide-number: c
+    theme:
+      - dark
+      - _assets/css/custom.scss
+    title-slide-attributes:
+      data-footer: false
+    transition: fade
+    view-distance: 10
+
+website:
+  favicon: _assets/images/favicon.ico
+  site-url: https://scott-huberty.github.io/talks
+  title: Talks

@@ -1,0 +1,21 @@
+# {data-menu-title="QR Code"}
+
+::: {layout="[55,45]"}
+
+::: {.cell}
+
+<img
+  alt="QR code linking to this talk's web page."
+  src="https://api.qrserver.com/v1/create-qr-code/?data=https://example.com/talks/{{< meta slug >}}&amp;bgcolor=000000&amp;color=ffffff&amp;size=550x550"
+  style="display:block;margin:auto;width:550px;"
+/>
+
+:::
+
+::: {.cell}
+
+<https://example.com/talks>
+
+:::
+
+:::

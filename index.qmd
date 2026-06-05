@@ -1,0 +1,23 @@
+---
+title: Talks
+format:
+  html:
+    page-layout: full
+listing:
+  contents: .
+  date-format: iso
+  exclude:
+    title: Page Not Found
+  field-display-names:
+    institute: Organisation
+    subtitle: Event
+  fields:
+    - date
+    - title
+    - subtitle
+    - author
+    - institute
+  page-size: 5
+  sort: date desc
+  type: table
+---

@@ -1,0 +1,31 @@
+<script type="text/javascript">
+  // Cache DOM elements (initialized after Reveal.js is ready)
+  let slideMenu = null;
+  let logo = null;
+
+  function updateUiVisibility(slide) {
+    const isTitleSlide = slide.indexh === 0;
+
+    const display = isTitleSlide ? "none" : "block";
+
+    // Guard before setting style to prevent runtime errors
+    if (slideMenu) {
+      slideMenu.style.display = display;
+    }
+    if (logo) {
+      logo.style.display = display;
+    }
+  }
+
+  Reveal.addEventListener("ready", (event) => {
+    // Cache DOM elements once Reveal.js is ready
+    slideMenu = document.querySelector("div.slide-menu-button");
+    logo = document.querySelector("img.slide-logo");
+
+    updateUiVisibility(event);
+  });
+
+  Reveal.addEventListener("slidechanged", (event) => {
+    updateUiVisibility(event);
+  });
+</script>

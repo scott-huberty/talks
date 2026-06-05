@@ -1,0 +1,327 @@
+/*-- scss:rules --*/
+
+:root {
+  --talk-accent: #7d66d9;
+  --talk-muted: rgba(255, 255, 255, 0.72);
+  --talk-panel: rgba(255, 255, 255, 0.055);
+  --talk-border: rgba(255, 255, 255, 0.16);
+}
+
+.reveal .slides {
+  text-align: left;
+}
+
+.reveal h2 {
+  margin-bottom: 0.75rem;
+}
+
+.reveal h2::after {
+  content: "";
+  display: block;
+  width: 3rem;
+  height: 0.14rem;
+  margin-top: 0.35rem;
+  background: var(--talk-accent);
+}
+
+.reveal .title-slide h1::after,
+.reveal .quarto-title-block h1::after {
+  content: none;
+}
+
+.reveal p,
+.reveal li {
+  line-height: 1.22;
+}
+
+.reveal ul,
+.reveal ol {
+  margin-top: 0.2rem;
+}
+
+.reveal li + li {
+  margin-top: 0.28rem;
+}
+
+.reveal code {
+  color: #d7ccff;
+}
+
+.reveal pre {
+  font-size: 0.42em;
+  line-height: 1.15;
+}
+
+.reveal pre code {
+  max-height: 30rem;
+}
+
+/* Shrink author names on title slide */
+.reveal .quarto-title-authors {
+  font-size: 0.6em;
+}
+
+.reveal .slide-logo {
+  /* circular image */
+  border-radius: 50%;
+
+  /* resize image */
+  max-height: 10vh !important;
+}
+
+/* hide slide number on title slide */
+.reveal .slide-number > a[href="#/"] {
+  display: none;
+}
+
+.reveal .progress span {
+  background: var(--talk-accent);
+}
+
+.reveal .slide-menu-button a,
+.reveal .slide-menu-button a:hover,
+.reveal .slide-menu-button a:visited {
+  color: var(--talk-accent);
+}
+
+.reveal .slide-menu-button .fa-bars::before {
+  background-color: var(--talk-accent);
+  background-image: none;
+  mask-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M2 4h12v1.5H2zM2 7.25h12v1.5H2zM2 10.5h12V12H2z"/></svg>');
+  mask-repeat: no-repeat;
+  mask-size: 2.2rem 2.2rem;
+  -webkit-mask-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M2 4h12v1.5H2zM2 7.25h12v1.5H2zM2 10.5h12V12H2z"/></svg>');
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: 2.2rem 2.2rem;
+}
+
+.reveal .slide-menu-button a.external::after {
+  content: none;
+}
+
+.reveal .profile-slide,
+.reveal .background-slide {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.95fr);
+  gap: 2rem;
+  align-items: center;
+}
+
+.reveal .profile-copy,
+.reveal .background-copy {
+  font-size: 1.05em;
+}
+
+.reveal .profile-logos,
+.reveal .background-logos {
+  width: 100%;
+}
+
+.reveal .profile-logos > p {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  align-items: center;
+  justify-items: center;
+  margin: 0;
+}
+
+.reveal .background-logos > p {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(7rem, 1fr));
+  gap: 1.2rem;
+  align-items: center;
+  justify-items: center;
+  margin: 0;
+}
+
+.reveal .profile-logos img {
+  max-width: 100%;
+  max-height: 9rem;
+  object-fit: contain;
+}
+
+.reveal .background-logos img {
+  max-width: 100%;
+  max-height: 6.5rem;
+  object-fit: contain;
+}
+
+.reveal .modern-scientist-slide {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(320px, 1.05fr);
+  grid-template-rows: auto minmax(0, 1fr);
+  column-gap: 1.2rem;
+  row-gap: 0.7rem;
+  align-items: center;
+}
+
+.reveal .modern-scientist-equation {
+  grid-column: 1 / -1;
+}
+
+.reveal .modern-scientist-equation code.sourceCode {
+  display: inline-block;
+  font-size: 0.52em !important;
+  white-space: nowrap;
+}
+
+.reveal .modern-scientist-equation code.sourceCode span {
+  white-space: nowrap !important;
+}
+
+.reveal .modern-scientist-copy {
+  font-size: 0.74em;
+}
+
+.reveal .modern-scientist-figure img {
+  display: block;
+  margin-left: auto;
+  width: 88%;
+  max-height: 25rem;
+  object-fit: contain;
+}
+
+.reveal .three-part-slide {
+  margin-top: 1.4rem;
+}
+
+.reveal .three-part-slide ul {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 0;
+  width: 100%;
+}
+
+.reveal .three-part-slide li {
+  list-style: none;
+  min-height: 10rem;
+  margin: 0;
+  padding: 1rem;
+  border: 1px solid var(--talk-border);
+  background: var(--talk-panel);
+}
+
+.reveal .three-part-slide strong {
+  display: block;
+  margin-bottom: 0.35rem;
+  color: #fff;
+}
+
+.reveal .process-row {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0.7rem;
+  margin-top: 2rem;
+  counter-reset: process;
+}
+
+.reveal .process-row ol {
+  display: contents;
+}
+
+.reveal .process-row li {
+  list-style: none;
+  min-height: 7rem;
+  margin: 0;
+  padding: 1rem 0.8rem;
+  border-top: 0.22rem solid var(--talk-accent);
+  background: var(--talk-panel);
+}
+
+.reveal .process-row li::before {
+  counter-increment: process;
+  content: counter(process, decimal-leading-zero);
+  display: block;
+  margin-bottom: 1.2rem;
+  color: var(--talk-muted);
+  font-size: 0.55em;
+}
+
+.reveal .image-text-slide,
+.reveal .code-comparison-slide {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 1.3rem;
+  align-items: center;
+}
+
+.reveal .image-panel,
+.reveal .text-panel,
+.reveal .code-panel {
+  min-width: 0;
+}
+
+.reveal .image-panel p {
+  margin: 0;
+}
+
+.reveal .image-panel img {
+  display: block;
+  width: 100%;
+  max-height: 29rem;
+  object-fit: contain;
+  margin: 0 auto;
+}
+
+.reveal .text-panel {
+  font-size: 0.92em;
+}
+
+.reveal .code-comparison-slide {
+  align-items: stretch;
+}
+
+.reveal .code-comparison-slide .image-panel,
+.reveal .code-comparison-slide .code-panel {
+  display: flex;
+  align-items: center;
+}
+
+.reveal .code-panel .sourceCode,
+.reveal .code-panel pre {
+  width: 100%;
+}
+
+.reveal section:has(> pre) > pre,
+.reveal section > .code-copy-outer-scaffold {
+  max-width: 92%;
+}
+
+.reveal section:has(> pre) > pre {
+  margin-left: 0;
+}
+
+.reveal section > .code-copy-outer-scaffold {
+  margin-top: 0.8rem;
+}
+
+.reveal section > .code-copy-outer-scaffold pre {
+  margin-left: 0;
+}
+
+.reveal .result-comparison-slide {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.2rem;
+  align-items: start;
+}
+
+.reveal .result-panel {
+  min-width: 0;
+  text-align: center;
+  font-size: 0.7em;
+}
+
+.reveal .result-panel p {
+  margin: 0.3rem 0 0;
+}
+
+.reveal .result-panel img {
+  display: block;
+  width: 100%;
+  max-height: 26rem;
+  object-fit: contain;
+  margin: 0.4rem auto 0;
+}

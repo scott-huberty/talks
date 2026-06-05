@@ -1,0 +1,23 @@
+---
+name: Links
+
+on:
+  push:
+    branches:
+      - main
+      - renovate/**
+  pull_request:
+
+jobs:
+  links:
+    permissions:
+      contents: read
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - uses: actions/checkout@v4
+      - uses: lycheeverse/lychee-action@v2
+        with:
+          args: --verbose --no-progress './**/*.md' './**/*.qmd'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
