@@ -100,7 +100,7 @@
     code span.vs { color: #abe338; } /* VerbatimString */
     code span.wa { color: #dcc6e0; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-39817b01395f22f22162eb4fbd3164f7.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-a56e0912ca99ddac82eb3c298a1bd970.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -236,12 +236,12 @@ Scott Huberty, PhD
 </ul>
 </div>
 <div class="profile-logos">
-<p><img data-src="figures/McGill.png" alt="McGill University logo"></p>
+<p><img data-src="figures/McGill.png" alt="McGill University logo"> <img data-src="figures/usc-transparent.png" alt="University of Southern California logo"> <img data-src="figures/James-Desjardins.png" class="profile-headshot" alt="James Desjardins"></p>
 </div>
 </div>
 </section>
 <section class="slide level2">
-<h2>Open Source Background</h2>
+<h2>My Background</h2>
 <div class="background-slide">
 <div class="background-copy">
 <ul>
@@ -360,7 +360,7 @@ Scott Huberty, PhD
 </div>
 <div class="text-panel">
 <ul>
-<li class="fragment">How can we efficiently make the LLM aware of project-specific and field-specific information?</li>
+<li class="fragment">Project-specific and field-specific information</li>
 <li class="fragment">Useful context includes:
 <ul>
 <li class="fragment">AMICA literature</li>
@@ -671,6 +671,54 @@ Scott Huberty, PhD
 
 </section>
 <section class="slide level2">
+<h2>How We Work Together</h2>
+<div class="workflow-diagram">
+<div class="workflow-row">
+<div class="workflow-box">
+<p><strong>Plan mode</strong></p>
+<p>Frame the problem and approach.</p>
+</div>
+<div class="workflow-arrow">
+<p>→</p>
+</div>
+<div class="workflow-box">
+<p><strong>Context</strong></p>
+<p>Codebases, papers, MCPs, environments, tools.</p>
+</div>
+</div>
+<div class="implementation-box">
+<p><strong>Implementation loop</strong></p>
+<div class="implementation-steps">
+<div class="workflow-step">
+<p>Define task</p>
+</div>
+<div class="workflow-step">
+<p>Patch</p>
+</div>
+<div class="workflow-step">
+<p>Human review</p>
+</div>
+<div class="workflow-step">
+<p>Commit</p>
+</div>
+</div>
+</div>
+<div class="workflow-row">
+<div class="workflow-box">
+<p><strong>Grill-me review</strong></p>
+<p>Stress-test assumptions and decisions.</p>
+</div>
+<div class="workflow-arrow">
+<p>→</p>
+</div>
+<div class="workflow-box">
+<p><strong>Optional: to-issues</strong></p>
+<p>Create tasks for future work.</p>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
 <h2>What Works For Me</h2>
 <ul>
 <li class="fragment">Give the model relevant files and constraints
@@ -696,7 +744,6 @@ Scott Huberty, PhD
 <section class="slide level2">
 <h2>Next Steps</h2>
 <ul>
-<li class="fragment">Update <code>website.site-url</code> in <code>_quarto.yaml</code> before publishing</li>
 <li class="fragment">Explore <code>sandcastle</code> for multi-agent orchestration</li>
 <li class="fragment">Add MCP servers for scientific Python packages</li>
 </ul>
