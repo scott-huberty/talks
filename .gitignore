@@ -16,3 +16,6 @@ site_libs
 
 .codex
 .DS_Store
+
+.pre-commit-cache
+
