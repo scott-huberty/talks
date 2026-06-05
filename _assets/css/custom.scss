@@ -119,8 +119,8 @@
 
 .reveal .profile-logos > p {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.5rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
   align-items: center;
   justify-items: center;
   margin: 0;
@@ -137,8 +137,13 @@
 
 .reveal .profile-logos img {
   max-width: 100%;
-  max-height: 9rem;
+  max-height: 8rem;
   object-fit: contain;
+}
+
+.reveal .profile-logos img.profile-headshot {
+  border-radius: 50%;
+  border: 2px solid var(--talk-border);
 }
 
 .reveal .background-logos img {
@@ -324,4 +329,72 @@
   max-height: 26rem;
   object-fit: contain;
   margin: 0.4rem auto 0;
+}
+
+.reveal .workflow-diagram {
+  display: grid;
+  grid-template-rows: auto auto auto;
+  gap: 0.8rem;
+  margin-top: 0.5rem;
+  font-size: 0.62em;
+}
+
+.reveal .workflow-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 2rem minmax(0, 1fr);
+  gap: 0.8rem;
+  align-items: stretch;
+}
+
+.reveal .workflow-box,
+.reveal .implementation-box,
+.reveal .workflow-step {
+  min-width: 0;
+  border: 1px solid var(--talk-border);
+  background: var(--talk-panel);
+}
+
+.reveal .workflow-box {
+  min-height: 5.2rem;
+  padding: 0.65rem 0.85rem;
+}
+
+.reveal .workflow-box p,
+.reveal .implementation-box p {
+  margin: 0.15rem 0 0;
+}
+
+.reveal .workflow-box strong,
+.reveal .implementation-box strong {
+  color: #fff;
+}
+
+.reveal .workflow-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--talk-accent);
+  font-size: 1.6em;
+  line-height: 1;
+}
+
+.reveal .implementation-box {
+  padding: 0.65rem 0.85rem 0.8rem;
+}
+
+.reveal .implementation-steps {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.6rem;
+  margin-top: 0.6rem;
+}
+
+.reveal .workflow-step {
+  display: flex;
+  min-height: 3.3rem;
+  align-items: center;
+  justify-content: center;
+  padding: 0.45rem;
+  text-align: center;
+  color: #fff;
 }

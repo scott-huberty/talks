@@ -18,4 +18,3 @@ site_libs
 .DS_Store
 
 .pre-commit-cache
-

@@ -23,11 +23,13 @@ title: "AI-Assisted Science"
 
 ::: {.profile-logos}
 ![](figures/McGill.png){fig-alt="McGill University logo"}
+![](figures/usc-transparent.png){fig-alt="University of Southern California logo"}
+![](figures/James-Desjardins.png){.profile-headshot fig-alt="James Desjardins"}
 :::
 
 :::
 
-## Open Source Background
+## My Background
 
 ::: {.background-slide}
 
@@ -141,7 +143,7 @@ title: "AI-Assisted Science"
 :::
 
 ::: {.text-panel}
-- How can we efficiently make the LLM aware of project-specific and field-specific information?
+- Project-specific and field-specific information
 - Useful context includes:
   - AMICA literature
   - existing Fortran implementation
@@ -453,6 +455,69 @@ enabled = true
 
 # Summary
 
+## How We Work Together
+
+::: {.workflow-diagram}
+::: {.workflow-row}
+::: {.workflow-box}
+**Plan mode**
+
+Frame the problem and approach.
+:::
+
+::: {.workflow-arrow}
+→
+:::
+
+::: {.workflow-box}
+**Context**
+
+Codebases, papers, MCPs, environments, tools.
+:::
+:::
+
+::: {.implementation-box}
+**Implementation loop**
+
+::: {.implementation-steps}
+::: {.workflow-step}
+Define task
+:::
+
+::: {.workflow-step}
+Patch
+:::
+
+::: {.workflow-step}
+Human review
+:::
+
+::: {.workflow-step}
+Commit
+:::
+:::
+:::
+
+::: {.workflow-row}
+::: {.workflow-box}
+**Grill-me review**
+
+Stress-test assumptions and decisions.
+:::
+
+::: {.workflow-arrow}
+→
+:::
+
+::: {.workflow-box}
+**Optional: to-issues**
+
+Create tasks for future work.
+:::
+:::
+:::
+
+
 ## What Works For Me
 
 - Give the model relevant files and constraints
@@ -470,6 +535,5 @@ enabled = true
 
 ## Next Steps
 
-- Update `website.site-url` in `_quarto.yaml` before publishing
 - Explore `sandcastle` for multi-agent orchestration
 - Add MCP servers for scientific Python packages
