@@ -116,5 +116,15 @@
 
 /* Figure with bullets underneath: cap its height. */
 .reveal .slides .fig-compact img {
-  max-height: 19rem;
+  max-height: 21rem;
+}
+
+.reveal .methods-table table {
+  width: 100%;
+  font-size: 0.62em;
+}
+
+.reveal .methods-table td,
+.reveal .methods-table th {
+  padding: 0.28em 0.6em;
 }
