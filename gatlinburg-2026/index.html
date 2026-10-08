@@ -165,6 +165,14 @@ Charlotte Distefano
   <p class="date">2026-10-08</p>
 </section>
 <section class="slide level2">
+
+<!--
+Hello everyone, I am going to talk today about decoding brain activity from EEG in neurodevelopmental populations.
+I am not going to make interpretations on the results at hand, as this is an ongoing project. However I will speak
+on the methodology and feasibility of decoding EEG signals in these populations, and some recommendations based on our experience.
+-->
+</section>
+<section class="slide level2">
 <h2>Why Decode?</h2>
 <div class="image-text-slide">
 <div class="text-panel">
@@ -193,6 +201,12 @@ Charlotte Distefano
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
+<!--
+So first, what is decoding and why is it useful?
+- Traditionally ERP analyses average the EEG signal across trials to reveal group-level effects.
+- Decoding, on the other hand, attempts to predict from (usually) single-trial EEG data, providing insights at the individual level.
+- Don't take this 70% accuracy literally or as the ultimate benchmark; reported accuracy rates vary across studies.
+-->
 <aside class="notes">
 <p>Timing: 0:45 (cumulative 2:05). The stimuli are pure tones. We classify the condition of each trial (standard vs deviant), not the diagnostic group.</p>
 <style type="text/css">
@@ -242,7 +256,6 @@ Charlotte Distefano
 <p class="cv-caption">Every trial is tested once, by a model that never saw it. <span>Each test block: ≤ 24 deviants (120 ÷ 5); after 5-trial averaging, ≤ 5.</span></p>
 <ul>
 <li class="fragment">One model per person; standard vs deviant at ~4 : 1</li>
-<li class="fragment">Always guessing “standard”: 80% accuracy, <strong>50% balanced accuracy</strong></li>
 </ul>
 <aside class="notes">
 <p>Timing: 0:45 (cumulative 3:50). Within each person we train a linear classifier on some trials and test it on held-out trials. Cross-validation repeats this five times: split the trials into five blocks, train on four, test on the fifth, and rotate so every trial is tested once by a model that never saw it. Keep the test block in mind: with 120 deviants it holds at most 24, and after averaging five trials at most 5. Because standards outnumber deviants about four to one, plain accuracy is misleading: always guessing “standard” gets 80%. Balanced accuracy averages the recall of both classes, so that strategy scores 50%.</p>
@@ -257,6 +270,11 @@ Charlotte Distefano
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
+<!--
+- Ok so how does decoding work?
+- Well in the case of EEG, it is a process where we take the trial segmented (epoched) data, usually channels × time, and feed it into a classifier to predict experimental conditions on a single-trial basis.
+- The process of training the model involves splitting the trials into training and test sets, fitting the classifier on the training set, and evaluating its performance on the test set, and doing this multiple times with different splits (cross-validation) to ensure that every trial is tested once by a model that never saw it during training.
+-->
 </section>
 <section class="slide level2">
 <h2>Feasibility</h2>
@@ -267,6 +285,9 @@ Charlotte Distefano
 <li class="fragment"><strong>Why it is hard</strong><br> Single-trial EEG is noisy, esp in developmental samples.</li>
 </ul>
 </div>
+<!--
+So I am going to walk through the steps of decoding EEG data from preprocessing to model evaluation in a specific sample, highlighting the challenges and considerations at each stage.
+-->
 </section>
 <section class="slide level2">
 <h2>Sample</h2>
@@ -319,8 +340,8 @@ Charlotte Distefano
 </div><div class="column" style="width:45%;">
 <ul>
 <li class="fragment">Task: Auditory oddball: 480 standard / 120 deviant pure tones</li>
-<li class="fragment">Analyzed: <strong>one session per person</strong></li>
 <li class="fragment">128-channel EGI Geodesic net</li>
+<li class="fragment">Analyzed: <strong>one session per person</strong></li>
 </ul>
 </div></div>
 <aside class="notes">
@@ -336,6 +357,10 @@ Charlotte Distefano
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
+<!--
+So we collected EEG data from a sample of participants across different developmental groups, including typically developing adolescents, and those across the autism spectrum, and individuals with Angelman syndrome.
+- They wore a high density EEG cap and listed to a presentation of pure tones presented at 2 different pitch levels.
+-->
 </section>
 <section class="slide level2">
 <h2>Preprocessing For Decoding</h2>
@@ -369,6 +394,10 @@ Charlotte Distefano
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
+<!-- 
+So I wanted to talk a bit about processing EEG data in preparation for decoding. However, there is no hard and fast rule; the optimal pipeline will depend on the specific characteristics of the data and task.
+- However here are some general considerations, and what we did.
+-->
 </section>
 <section class="slide level2">
 <h2>First Pass: Modestly Above 50%</h2>
@@ -389,6 +418,9 @@ Charlotte Distefano
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
+<!--
+So here are the results on a first initial pass at decoding the EEG data. Not terrible, but there is clearly room for improvement. I wanted to dive in to the choices we can make in order to improve on this.
+-->
 </section>
 <section class="slide level2">
 <h2>1. Choosing the right metric</h2>
@@ -421,6 +453,22 @@ Charlotte Distefano
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
+<!--
+- By metric I mean, how we evaluate the performance of our model, i.e. how often does it correctly predict the condition based on the EEG data
+
+- First we have "balanced accuracy". This is in contrast to plain accuracy. See, we have an unbalanced experimental design. 480 standard trials, 120 deviant trials. The model could simply always guess "standard". It would be correct 480 out of 600 trials, or 80% accuracy. This is `sklearn.metrics.balanced_accuracy_score,` or scoring="balanced_accuracy"
+
+- But this is clearly misleading. The model is not using the brain data at all!
+- Balanced accuracy tweaks the calculation by taking the average of the recall for each class, giving equal weight to both the majority and minority classes. If the model always predicted "standard", it's balanced accuracy would be (100% + 0%) / 2 = 50%.
+
+- The second column is logistic balanced accuracy. The point here is that with a 4:1 ratio of standard to deviant trials, the model could still learn that deviants are rare, and that gets built in to its score, i.e. it might get a score of 0.3. This can make it difficult for any devient trial to be correctly identified. 
+
+- In the third column, we weight the classes inversely to their frequency, so that the minority class (deviant) gets more importance in the loss function, helping the model to pay more attention to correctly classifying it.
+TThis is LogisticRegression(class_weight="balanced")
+- Finally, AUC (Area Under the Curve) ignores the threshold, it asks: pick one random deviant trial and one random standard trial; how often does the deviant get the higher score?
+- 0.5 means a coin flip. 0.566 means the deviant ranks higher in about 57% of deviant–standard pairs.
+sklearn.metrics.roc_auc_score, or scoring="roc_auc"
+-->
 </section>
 <section class="slide level2">
 <h2>2. Averaging Trials to increase SNR</h2>
@@ -444,6 +492,11 @@ Charlotte Distefano
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
+<!--
+- Single trials are noisy. The brain signal is small compared to background activity and noise.
+- Traditional ERP analyses usually average trials to increase the signal. Because noise is random and cancels out, but the signal is consistent across trials, averaging improves the signal-to-noise ratio.
+- We can do the same thing for decoding: average a few trials into one pseudo-trial to reduce noise and improve classification performance.
+-->
 </section>
 <section class="slide level2">
 <h2>3. How many trials should we average?</h2>
@@ -464,6 +517,11 @@ Charlotte Distefano
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
+<!--
+- But how many trials should we average?
+- There is a trade-off: averaging more trials reduces noise but also reduces the number of usable trials for the model to see.
+- From a sub-analysis, we found that averaging trials does improve decoding performance, but we need to be careful not to leave too few trials for the model to learn, which I'll speak to later.
+-->
 </section>
 <section class="slide level2">
 <h2>4. Report Usable Trials</h2>
@@ -472,8 +530,7 @@ Charlotte Distefano
 </div>
 <ul>
 <li class="fragment">MV-ASD and AS keep ~35% fewer deviants</li>
-<li class="fragment">Fewer trials → lower AUC within person (TD, V-ASD)</li>
-<li class="fragment">Here, group AUC did not differ, with or without trial count</li>
+<li class="fragment">Fewer trials → lower accuracy within person (TD, V-ASD)</li>
 </ul>
 <aside class="notes">
 <p>Timing: 0:50 (cumulative 8:40). Median usable deviants: TD 94, V-ASD 84, MV-ASD 56, AS 58.5. Subsampling within person lowers AUC for TD and V-ASD. Across people, trial count did not predict AUC (Spearman rho 0.12), and the group effect was not significant with or without trial count as a covariate (p = .16 and .18; p = .08 when everyone is subsampled to 40 deviants). It did not drive our result, but it is a ready-made confound: check it and report it. Fewer participants contribute at higher trial counts in the right panel.</p>
@@ -488,6 +545,11 @@ Charlotte Distefano
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
+<!--
+-- On that note, I'd always report the number of usuable trials from your study, because I don't always see this in papers.
+-- If we subsampeld our data to restrict the number of trials to a specific amount, we can see that this affects decoding performance within participants.
+-- So we need to be careful when interpretign results across participants and groups with different numbers of usable trials.
+-->
 </section>
 <section class="slide level2">
 <h2>5. Don’t overlook individuals.</h2>
@@ -511,6 +573,16 @@ Charlotte Distefano
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
+<!--
+- Averaged results can tell you about group-level effects, but they can obscure individual differences. 
+- This information may be useful if you want to understand why some individuals are decodable while others are not.
+- It can also reveal counfounding factors.
+- We wanted to figure out whether, for each individual, could their accuracy score be derived by chance?
+- To do this, we performed permutation test. In this test, we suffled the condition labels (deviant or standard), making the labels meaningless, and re ran the decoder. We did this 200 times for each individual to build a null distribution of AUC scores.
+- Then we asked, whether the real AUC score for that individual was higher than 95% of the scores from the shuffled null distribution. If it was, we considered that individual's decoding to be above chance.
+- What we found, interestingly, is that participants with fewer trials needed a higher real accuracy score. in other
+words, with less trials, one can achieve higher AUC scores by chance.
+-->
 </section>
 <section class="slide level2">
 <h2>Revised Results</h2>
