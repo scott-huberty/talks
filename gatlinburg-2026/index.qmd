@@ -154,7 +154,7 @@ Timing: 0:45 (cumulative TBD). Preprocessing for decoding is not the same as for
 ![](figures/single-trial.png){.result-figure fig-alt="Participant-level single-trial balanced accuracy from the original pipeline. Means: TD 55.7%, verbal ASD 54.1%, minimally verbal ASD 53.4%, Angelman syndrome 56.9%."}
 
 ::: {.source-line}
-Original pipeline (abstract): LDA on all channels × time. One dot per person (82 people); repeat sessions averaged.
+One dot per person.
 :::
 
 ::: {.notes}
@@ -170,7 +170,7 @@ Timing: 0:45 (cumulative 4:35). This is the abstract's analysis, re-summarized p
 :::
 
 ::: {.text-panel}
-- Same model, same data:
+- Same model & data:
   - balanced accuracy **0.51**
   - AUC **0.57**
 - Classifier priors favour the majority class
@@ -181,6 +181,11 @@ Timing: 0:45 (cumulative 4:35). This is the abstract's analysis, re-summarized p
 
 ::: {.notes}
 Timing: 1:00 (cumulative 5:35). Re-analysis pipeline: 100 Hz, 0–500 ms, L2 logistic regression, repeated 5×5-fold CV. Without class weighting the decision threshold favours standards, so balanced accuracy sits at 0.51 even though the scores separate the classes (AUC 0.57, paired Wilcoxon p < .001). Regularizing and downsampling the original model, and dropping the bad channels it had kept, changed little (0.550 → 0.541 balanced accuracy); the metric choice matters more.
+Scenario: Always says "standard," no brain signal used
+- Standards: 480 / 480 correct = 100%
+- Deviants: 0 / 120 correct = 0%
+- Plain accuracy: 480 / 600 = 80%
+- Balanced accuracy: (100% + 0%) / 2 = 50%
 :::
 
 ## 2. Averaging Trials to increase SNR
@@ -201,12 +206,12 @@ Timing: 1:00 (cumulative 6:35). Because single trials are noisy, a common fix is
 
 ## 3. How many trials should we average?
 
-![](figures/decoding/fig-pseudo-compare.png){.result-figure fig-alt="Left: original pipeline balanced accuracy, single trial versus five-trial average built before cross-validation, by group. Right: AUC when averages are built inside the folds, rising with the number of trials averaged in every group."}
+![](figures/decoding/fig-pseudo.png){.result-figure fig-alt="Decoding AUC when averages are built inside the folds, rising with the number of trials averaged (k = 1, 3, 5, 10) in every group: TD, V-ASD, MV-ASD, and AS."}
 
 - Built inside train and test folds, averaging helps **every group**: 0.56 → 0.69 (k = 10)
 
 ::: {.notes}
-Timing: 1:15 (cumulative 7:50). Left, the original evaluation, same 78 people: averaging appears to help TD (0.557 → 0.594) and verbal ASD (0.541 → 0.572), barely MV-ASD (0.540 → 0.550), and to hurt AS (0.577 → 0.531). Note the two panels use different metrics. Right, averages built separately within training and test folds and repeated over random groupings: AUC rises with k in every group, including MV-ASD (0.54 → 0.66) and AS (0.59 → 0.73). Caveats: at k = 10 only 12 MV-ASD and 6 AS participants have enough trials, and this decodes averaged responses, not single trials.
+Timing: 1:15 (cumulative 7:50). Averages built separately within training and test folds and repeated over random groupings: AUC rises with k in every group, including MV-ASD (0.54 → 0.66) and AS (0.59 → 0.73). Caveats: at k = 10 only 12 MV-ASD and 6 AS participants have enough trials, and this decodes averaged responses, not single trials.
 :::
 
 ## 4. Report Usable Trials
@@ -223,7 +228,7 @@ Timing: 1:15 (cumulative 7:50). Left, the original evaluation, same 78 people: a
 Timing: 0:50 (cumulative 8:40). Median usable deviants: TD 94, V-ASD 84, MV-ASD 56, AS 58.5. Subsampling within person lowers AUC for TD and V-ASD. Across people, trial count did not predict AUC (Spearman rho 0.12), and the group effect was not significant with or without trial count as a covariate (p = .16 and .18; p = .08 when everyone is subsampled to 40 deviants). It did not drive our result, but it is a ready-made confound: check it and report it. Fewer participants contribute at higher trial counts in the right panel.
 :::
 
-## 5. Ask Who, Not Just How Many
+## 5. Don't overlook individuals.
 
 ::: {.image-panel .fig-compact}
 ![](figures/decoding/fig-individual.png){fig-alt="Left: AUC required for significance versus number of trials. Right: percentage of participants decoded above chance by group: TD 10 of 23, V-ASD 8 of 27, MV-ASD 4 of 18, AS 5 of 10."}
@@ -234,6 +239,7 @@ Timing: 0:50 (cumulative 8:40). Median usable deviants: TD 94, V-ASD 84, MV-ASD 
 
 ::: {.notes}
 Timing: 1:00 (cumulative 9:40). A group mean above 0.5 does not say which people can be decoded. With a 200-permutation test per person, 27 of 78 (35%) are above chance; all groups exceed the 5% expected by chance (binomial p ≤ .011). The threshold depends strongly on trial count: people with ~20 deviants need AUC around 0.65.
+For each person, we shuffled the trial labels 200 times and re-ran the decoder, which shows how high the score can go by luck alone for that person. Someone counts as decodable only if their real score beats 95% of those shuffled scores.
 :::
 
 ## Revised Results
@@ -263,7 +269,6 @@ Timing: 0:50 (cumulative 10:30). Single-trial decoding is weak but above chance 
 ::: {.checklist}
 - Define the prediction target: single trial, average etc.
 - Use **AUC** (or class weights) with imbalanced designs
-- Build averages **inside** CV folds; report the number of trials
 - Test **individuals** with permutation nulls
 - **Decode the baseline** as a sanity check
 :::
