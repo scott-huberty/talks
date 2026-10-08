@@ -1,9 +1,44 @@
 [
   {
+    "objectID": "gatlinburg-2026/index.html#backup-baseline",
+    "href": "gatlinburg-2026/index.html#backup-baseline",
+    "title": "Decoding brain activity From EEG in Neurodevelopmental Populations",
+    "section": "Decoding Before The Sound",
+    "text": "Decoding Before The Sound\n\n\n\n\n\n\nAUC = 0.55 before onset (p &lt; .001)\nShuffled labels: 0.50\nNot carry-over, sequence position, or drift\nCandidate causes:\n\nmarkers offset from sound onset\n1 Hz high-pass + baseline correction\n\n\n\n\n\nBackup. The conditions are decodable before the sound (mean pre-stimulus AUC 0.549, p &lt; .001; 53 of 78 participants peak before onset). Ruled out on 8 participants: classifier bias (label-shuffle null 0.501 ± 0.010), previous-trial carry-over, run-length position, drift, and epoch-filter smearing. Two candidates remain: event markers placed after the true sound onset, or a 1 Hz high-pass on continuous data followed by baseline correction (van Driel, Olivers & Fahrenfort, 2021). The events files have no audio-onset channel, so this could not be checked."
+  },
+  {
+    "objectID": "gatlinburg-2026/index.html#backup-time-course",
+    "href": "gatlinburg-2026/index.html#backup-time-course",
+    "title": "Decoding brain activity From EEG in Neurodevelopmental Populations",
+    "section": "Time Course And ERP By Group",
+    "text": "Time Course And ERP By Group\n\n\nBars: clusters above chance (one-sided cluster permutation). In MV-ASD and AS, significant clusters are only before onset. The difference wave turns negative near −100 ms.\n\n\nBackup. The grand-average ERP shows no clear N1 after onset, and the deviant negativity begins around −100 ms. A sharp onset like this is more typical of a timing offset than a filter smear. If the markers are offset, fixed MMN windows (100–300 ms) are misplaced too."
+  },
+  {
+    "objectID": "gatlinburg-2026/index.html#backup-diagnostics",
+    "href": "gatlinburg-2026/index.html#backup-diagnostics",
+    "title": "Decoding brain activity From EEG in Neurodevelopmental Populations",
+    "section": "Baseline Diagnostics",
+    "text": "Baseline Diagnostics\n\n\n\n\nCheck (8 participants)\nPre-stimulus AUC\n100–300 ms AUC\n\n\n\n\nReal labels\n0.556\n0.525\n\n\nLabel-shuffle null (20 per person)\n0.501 ± 0.010\n0.505 ± 0.012\n\n\nNo smearing (10 ms bins)\n0.556\n0.526\n\n\nStandards after a deviant removed\n0.558\n0.536\n\n\nStandards matched on sequence position\n0.554\n0.541\n\n\n\n\n\nBackup. Diagnostics run on 8 participants with the time-resolved decoder. None of these controls removes the pre-stimulus effect."
+  },
+  {
+    "objectID": "gatlinburg-2026/index.html#backup-methods",
+    "href": "gatlinburg-2026/index.html#backup-methods",
+    "title": "Decoding brain activity From EEG in Neurodevelopmental Populations",
+    "section": "Analysis Details",
+    "text": "Analysis Details\n\n\n\n\n\n\n\n\nComponent\nRe-analysis\n\n\n\n\nEpochs\n−200–500 ms; 150 µV rejection; average reference\n\n\nFeatures\n0–500 ms in 10 ms bins (100 Hz), all channels\n\n\nModel\nScaler + L2 logistic, class-weighted (C = 0.001; per-bin C = 1)\n\n\nEvaluation\nRepeated 5 × 5-fold CV; AUC and balanced accuracy\n\n\nIndividuals\n200-permutation test per participant\n\n\nAveraging\nPseudo-trials within train and test folds, k = 1–10\n\n\nSample\nOne session per person; ≥ 20 usable deviants\n\n\n\n\n\nBackup. The pipeline was fixed in advance from an 8-participant pilot; no tuning. The original pipeline used all 701 samples at 1 kHz with unregularized LDA and single 5-fold CV, and kept channels flagged bad in its features; the re-analysis drops them."
+  },
+  {
+    "objectID": "gatlinburg-2026/index.html#backup-references",
+    "href": "gatlinburg-2026/index.html#backup-references",
+    "title": "Decoding brain activity From EEG in Neurodevelopmental Populations",
+    "section": "References",
+    "text": "References\n\nBayet, L., et al. (2020). Temporal dynamics of visual representations in the infant brain. Developmental Cognitive Neuroscience, 45, 100860.\nGrootswagers, T., Wardle, S. G., & Carlson, T. A. (2017). Decoding dynamic brain patterns from evoked responses. Journal of Cognitive Neuroscience, 29(4), 677–697. doi:10.1162/jocn_a_01068\nGwilliams, L., King, J.-R., Marantz, A., & Poeppel, D. (2022). Neural dynamics of phoneme sequences reveal position-invariant code for content and order. Nature Communications, 13, 6606.\nvan Driel, J., Olivers, C. N. L., & Fahrenfort, J. J. (2021). High-pass filtering artifacts in multivariate classification of neural time series data. Journal of Neuroscience Methods, 352, 109080.\nVaroquaux, G., et al. (2017). Assessing and tuning brain decoders: Cross-validation, caveats, and guidelines. NeuroImage, 145, 166–179. doi:10.1016/j.neuroimage.2016.10.038"
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Talks",
     "section": "",
-    "text": "Order By\n      Default\n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Title\n      \n      \n        Author\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\n\nTitle\n\n\n\nEvent\n\n\n\nAuthor\n\n\n\nOrganisation\n\n\n\n\n\n\n\n\n2026-06-05\n\n\nAI-Assisted Science\n\n\nAccelerating research while maintaining rigor\n\n\nScott Huberty, PhD\n\n\nUniversity of Southern California\n\n\n\n\n\n\nNo matching items"
+    "text": "Order By\n      Default\n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Title\n      \n      \n        Author\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\n\nTitle\n\n\n\nEvent\n\n\n\nAuthor\n\n\n\nOrganisation\n\n\n\n\n\n\n\n\n2026-10-08\n\n\nAI-Assisted Science\n\n\nAccelerating research while maintaining rigor\n\n\nScott Huberty, PhD\n\n\nUniversity of Southern California\n\n\n\n\n\n\n2026-10-08\n\n\nDecoding brain activity From EEG in Neurodevelopmental Populations\n\n\nCaveats and Guidelines.\n\n\nScott Huberty, Sydney Jacobs, Charlotte Distefano\n\n\nUniversity of Southern California\n\n\n\n\n\n\nNo matching items"
   }
 ]

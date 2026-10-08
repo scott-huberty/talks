@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 300" font-family="Helvetica, Arial, sans-serif" role="img" aria-label="Single EEG trials of two conditions feed a linear classifier that separates them; a held-out trial is assigned to one side.">
+  <rect width="520" height="300" fill="#191919"/>
+  <!-- trials -->
+  <g fill="none" stroke-width="2">
+    <path d="M20 50 q15 -18 30 0 t30 0 t30 0 t30 0" stroke="#8f8e88"/>
+    <path d="M20 85 q15 -14 30 0 t30 0 t30 0 t30 0" stroke="#8f8e88"/>
+    <path d="M20 120 q15 -20 30 0 t30 0 t30 0 t30 0" stroke="#8f8e88"/>
+    <path d="M20 175 q15 22 30 0 t30 -6 t30 6 t30 0" stroke="#9085e9"/>
+    <path d="M20 210 q15 26 30 0 t30 -4 t30 4 t30 0" stroke="#9085e9"/>
+  </g>
+  <text x="20" y="25" fill="#c3c2b7" font-size="14">standard trials</text>
+  <text x="20" y="252" fill="#c3c2b7" font-size="14">deviant trials</text>
+  <!-- arrow -->
+  <path d="M160 140 h40" stroke="#7d66d9" stroke-width="3"/>
+  <path d="M200 132 l12 8 l-12 8 z" fill="#7d66d9"/>
+  <!-- feature space -->
+  <rect x="225" y="30" width="200" height="220" fill="none" stroke="#3a3a37"/>
+  <g fill="#8f8e88">
+    <circle cx="255" cy="70" r="6"/><circle cx="285" cy="95" r="6"/><circle cx="265" cy="125" r="6"/>
+    <circle cx="300" cy="60" r="6"/><circle cx="320" cy="110" r="6"/><circle cx="280" cy="160" r="6"/>
+    <circle cx="345" cy="80" r="6"/><circle cx="250" cy="190" r="6"/>
+  </g>
+  <g fill="#9085e9">
+    <circle cx="390" cy="200" r="6"/><circle cx="360" cy="220" r="6"/><circle cx="400" cy="150" r="6"/>
+    <circle cx="330" cy="200" r="6"/><circle cx="375" cy="120" r="6"/>
+  </g>
+  <path d="M240 235 L420 55" stroke="#ffffff" stroke-width="2" stroke-dasharray="6 5" transform="translate(40 30)"/>
+  <text x="325" y="270" fill="#c3c2b7" font-size="14" text-anchor="middle">linear classifier</text>
+  <!-- held-out trial -->
+  <circle cx="470" cy="140" r="8" fill="none" stroke="#ffffff" stroke-width="2.5"/>
+  <text x="470" y="170" fill="#ffffff" font-size="14" text-anchor="middle">new</text>
+  <text x="470" y="187" fill="#ffffff" font-size="14" text-anchor="middle">trial?</text>
+</svg>

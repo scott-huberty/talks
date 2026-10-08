@@ -1,0 +1,173 @@
+/* Layouts specific to the Gatlinburg 2026 talk (shared styles: _assets/css/custom.scss). */
+
+.reveal .decode-pipeline {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 2rem minmax(0, 1fr) 2rem minmax(0, 1fr) 2rem minmax(0, 1fr);
+  gap: 0.6rem;
+  align-items: stretch;
+  margin: 1.2rem 0 1.6rem;
+  font-size: 0.7em;
+}
+
+.reveal .decode-pipeline .workflow-step {
+  min-height: 5rem;
+  line-height: 1.35;
+}
+
+.reveal .cv-folds {
+  display: grid;
+  grid-template-columns: 4rem repeat(5, minmax(0, 1fr));
+  gap: 0.2rem 0.3rem;
+  font-size: 0.5em;
+  text-align: center;
+}
+
+.reveal .cv-folds span {
+  padding: 0.1rem 0;
+  border: 1px solid var(--talk-border);
+  background: var(--talk-panel);
+  color: var(--talk-muted);
+}
+
+.reveal .cv-folds .cv-label {
+  border: none;
+  background: none;
+  text-align: right;
+  padding-right: 0.4rem;
+}
+
+.reveal .cv-folds .cv-test {
+  border-color: var(--talk-accent);
+  background: var(--talk-accent);
+  color: #fff;
+  font-weight: 700;
+}
+
+.reveal .cv-caption {
+  margin: 0.4rem 0 0.6rem 4.3rem;
+  font-size: 0.55em;
+  color: #ddd0fc;
+}
+
+.reveal .cv-caption span {
+  color: var(--talk-muted);
+}
+
+.reveal .prep-columns {
+  font-size: 0.72em;
+}
+
+.reveal .checklist ul {
+  list-style: none;
+  margin-left: 0;
+}
+
+.reveal .checklist li {
+  position: relative;
+  padding-left: 1.6em;
+  margin-bottom: 0.45em;
+}
+
+.reveal .checklist li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--talk-accent);
+  font-weight: 700;
+}
+
+.reveal .results-table table {
+  font-size: 0.68em;
+  margin: 0.6rem auto 0;
+}
+
+.reveal .results-table td,
+.reveal .results-table th {
+  padding: 0.3em 0.7em;
+}
+
+/* Text styles adapted from the codex draft (decoding-codex/gatlinburg-2026/slides.css). */
+.reveal .lead {
+  font-size: 1.15em;
+  line-height: 1.28;
+  margin-bottom: 0.8em;
+}
+
+.reveal .takeaway {
+  border-left: 4px solid var(--talk-accent);
+  padding-left: 0.65em;
+  margin-top: 0.8em;
+  color: #ddd0fc;
+  font-size: 0.9em;
+}
+
+.reveal .source-line {
+  color: #bbb;
+  font-size: 0.55em;
+  line-height: 1.25;
+  margin-top: 0.35em;
+}
+
+.reveal .source-line p {
+  margin: 0.3em 0;
+}
+
+.reveal .result-figure {
+  display: block;
+  width: 100%;
+  max-height: 25rem;
+  object-fit: contain;
+  margin: 0 auto;
+}
+
+.reveal .slide > p:has(.result-figure) {
+  margin: 0;
+}
+
+.reveal .cohort-table table {
+  font-size: 0.72em;
+}
+
+.reveal .backup-label {
+  color: var(--talk-muted);
+  font-size: 0.55em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 700px) {
+  .reveal .decode-pipeline {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .reveal .decode-pipeline .workflow-arrow {
+    transform: rotate(90deg);
+  }
+}
+
+/* Wider figure column and denser text for image + text slides in this talk. */
+.reveal .slides .image-text-slide {
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+}
+
+.reveal .slides .image-text-slide .text-panel {
+  font-size: 0.78em;
+}
+
+.reveal .slides .image-text-slide .image-panel img {
+  max-height: 31rem;
+}
+
+/* Figure with bullets underneath: cap its height. */
+.reveal .slides .fig-compact img {
+  max-height: 21rem;
+}
+
+.reveal .methods-table table {
+  width: 100%;
+  font-size: 0.62em;
+}
+
+.reveal .methods-table td,
+.reveal .methods-table th {
+  padding: 0.28em 0.6em;
+}
