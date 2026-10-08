@@ -11,7 +11,7 @@ institute: University of Southern California
 subtitle: Caveats and Guidelines.
 title: "Decoding brain activity From EEG in Neurodevelopmental Populations"
 title-slide-attributes:
-  data-notes: "Timing: 0:20 (cumulative 0:20). Main talk budget is about 12:30 including this slide; backup slides follow the Thanks slide. Numbers come from LISTEN branch claude/phonemes-decoding-2026-10-01, results/decoding_v2/stats.md, unless a slide says otherwise."
+  data-notes: "Timing: 0:20 (cumulative 0:20). Main talk budget is about 12:30 including this slide; backup slides follow the Thanks slide."
 ---
 
 ## Why Decode?
@@ -34,17 +34,10 @@ title-slide-attributes:
 
 ::: {.notes}
 Timing: 1:00 (cumulative 1:20). Group ERPs tell us about averages. Decoding asks whether one person's EEG carries enough information to tell two conditions apart, which is what any individual-level or BCI use would need. Adult binary decoding reaches about 70%; infant and developmental studies report less.
-[Sources]
-- LISTEN papers/Gatlinburg-2026.md (abstract): motivation, Bayet et al. 2020, Grootswagers et al. 2017, Gwilliams et al. 2022.
-[/Sources]
 :::
 
 ::: {.notes}
-Timing: 0:45 (cumulative 2:05). The task label in the data is "phonemes", but the stimuli are pure tones. We classify the condition of each trial (standard vs deviant), not the diagnostic group.
-[Sources]
-- LISTEN papers/Gatlinburg-2026.md: groups, paradigm, trial counts.
-- Scott's clarification to the codex agent, 2026-10-01: stimuli are pure tones.
-[/Sources]
+Timing: 0:45 (cumulative 2:05). The stimuli are pure tones. We classify the condition of each trial (standard vs deviant), not the diagnostic group.
 :::
 
 ## Decoding In One Slide
@@ -89,9 +82,6 @@ Timing: 0:45 (cumulative 2:05). The task label in the data is "phonemes", but th
 
 ::: {.notes}
 Timing: 0:45 (cumulative 3:50). Within each person we train a linear classifier on some trials and test it on held-out trials. Cross-validation repeats this five times: split the trials into five blocks, train on four, test on the fifth, and rotate so every trial is tested once by a model that never saw it. Keep the test block in mind: with 120 deviants it holds at most 24, and after averaging five trials at most 5. Because standards outnumber deviants about four to one, plain accuracy is misleading: always guessing "standard" gets 80%. Balanced accuracy averages the recall of both classes, so that strategy scores 50%.
-[Sources]
-- LISTEN scripts/decode.py (original pipeline); codex evaluation slide (decoding-codex gatlinburg-2026/index.qmd).
-[/Sources]
 :::
 
 
@@ -132,10 +122,6 @@ Timing: 0:45 (cumulative 3:50). Within each person we train a linear classifier 
 
 ::: {.notes}
 Timing: 1:00 (cumulative 3:05). The abstract's N of 86 counted recordings. 87 decoded recordings come from 82 people; four of the five repeat participants are in the Angelman group, so AS shrinks from 14–15 recordings to 11 people. For the re-analysis we kept one session per person, chosen by most usable deviant trials before looking at any scores, and excluded sessions with fewer than 20 usable deviants or no usable data, leaving 78 people.
-[Sources]
-- People and recordings: codex audit, phonemes-decoding-2026-09-29 artifacts/gatlinburg-2026/cohort_flow.csv and audit.json (staged on codex/phonemes-decoding-2026-10-01).
-- Analyzed column and exclusions: LISTEN-claude results/decoding_v2/stats.md, "Exclusions and session selection".
-[/Sources]
 :::
 
 
@@ -161,11 +147,6 @@ Timing: 1:00 (cumulative 3:05). The abstract's N of 86 counted recordings. 87 de
 
 ::: {.notes}
 Timing: 0:45 (cumulative TBD). Preprocessing for decoding is not the same as for ERPs. A classifier will use anything that differs between conditions, including artifacts, so artifact removal matters more. Every rejected trial shrinks the trial budget we come back to later. And anything learned from the data, such as scaling, dimension reduction, or averaging, belongs inside the cross-validation folds. Our pipeline: PyLossless cleaning, ICA with ICLabel (components labelled eye, muscle, heart, line noise, or channel noise with confidence above 0.3 removed), 1–40 Hz filter on the continuous data, epochs from −200 to 500 ms with baseline correction, 150 µV rejection, and average reference. Channels flagged bad were kept in the original decoding features and dropped in the re-analysis.
-[Sources]
-- LISTEN scripts/make_epochs.py (ICA, bad-channel rule, filter, epochs; MNE default baseline (None, 0)); scripts/decode.py (rejection, reference; interpolate_bads commented out, get_data returns bad channels).
-- LISTEN-claude scripts/decode_v2.py (bad channels dropped before decoding).
-- van Driel, Olivers & Fahrenfort (2021) for the high-pass caveat.
-[/Sources]
 :::
 
 ## First Pass: Modestly Above 50%
@@ -178,9 +159,6 @@ Original pipeline (abstract): LDA on all channels × time. One dot per person (8
 
 ::: {.notes}
 Timing: 0:45 (cumulative 4:35). This is the abstract's analysis, re-summarized per person. Group means are 54–57%, with wide individual spread. Note that AS is the highest group, not the lowest, once sessions are weighted per person. The rest of the talk asks how far to trust these numbers.
-[Sources]
-- codex audit: artifacts/gatlinburg-2026/single_trial_participants.csv and group_summary.csv; figure from scripts/gatlinburg_figures.py (phonemes-decoding-2026-09-29).
-[/Sources]
 :::
 
 ## 1. Choosing the right metric
@@ -203,9 +181,6 @@ Timing: 0:45 (cumulative 4:35). This is the abstract's analysis, re-summarized p
 
 ::: {.notes}
 Timing: 1:00 (cumulative 5:35). Re-analysis pipeline: 100 Hz, 0–500 ms, L2 logistic regression, repeated 5×5-fold CV. Without class weighting the decision threshold favours standards, so balanced accuracy sits at 0.51 even though the scores separate the classes (AUC 0.57, paired Wilcoxon p < .001). Regularizing and downsampling the original model, and dropping the bad channels it had kept, changed little (0.550 → 0.541 balanced accuracy); the metric choice matters more.
-[Sources]
-- LISTEN-claude results/decoding_v2/stats.md, section 1.
-[/Sources]
 :::
 
 ## 2. Averaging Trials to increase SNR
@@ -222,9 +197,6 @@ Original pipeline: 5-trial averages built before cross-validation. One dot per r
 
 ::: {.notes}
 Timing: 1:00 (cumulative 6:35). Because single trials are noisy, a common fix is to average a few trials of the same condition into one "pseudo-trial" and decode those. That cleans up the signal but divides the number of examples: 120 deviants become at most 24 averages at k = 5, before rejected trials, and those are then split across folds. The abstract reported that averaging five trials helped TD and verbal ASD but not MV-ASD or AS. Look at the budget: after averaging, test folds hold one to four deviant averages, and fewest in the groups with fewest trials. With one deviant average in a fold, a single prediction moves deviant recall from 0 to 100%. That evaluation cannot tell us whether averaging helps.
-[Sources]
-- codex audit: artifacts/gatlinburg-2026/matched_sessions.csv; figure from scripts/gatlinburg_figures.py (phonemes-decoding-2026-09-29).
-[/Sources]
 :::
 
 ## 3. How many trials should we average?
@@ -235,11 +207,6 @@ Timing: 1:00 (cumulative 6:35). Because single trials are noisy, a common fix is
 
 ::: {.notes}
 Timing: 1:15 (cumulative 7:50). Left, the original evaluation, same 78 people: averaging appears to help TD (0.557 → 0.594) and verbal ASD (0.541 → 0.572), barely MV-ASD (0.540 → 0.550), and to hurt AS (0.577 → 0.531). Note the two panels use different metrics. Right, averages built separately within training and test folds and repeated over random groupings: AUC rises with k in every group, including MV-ASD (0.54 → 0.66) and AS (0.59 → 0.73). Caveats: at k = 10 only 12 MV-ASD and 6 AS participants have enough trials, and this decodes averaged responses, not single trials.
-[Sources]
-- Left panel: LISTEN within_subject_decoding_results.csv and within_subject_decoding_results_pseudo.csv, restricted to the 78 analyzed sessions.
-- Right panel: LISTEN-claude results/decoding_v2/stats.md, section 6. Figure: scripts/analyze_v2.py fig_pseudo_compare.
-- Idea of overlaying the original pipeline: kimi draft (decoding-kimi, fig_pseudo).
-[/Sources]
 :::
 
 ## 4. Report Usable Trials
@@ -254,9 +221,6 @@ Timing: 1:15 (cumulative 7:50). Left, the original evaluation, same 78 people: a
 
 ::: {.notes}
 Timing: 0:50 (cumulative 8:40). Median usable deviants: TD 94, V-ASD 84, MV-ASD 56, AS 58.5. Subsampling within person lowers AUC for TD and V-ASD. Across people, trial count did not predict AUC (Spearman rho 0.12), and the group effect was not significant with or without trial count as a covariate (p = .16 and .18; p = .08 when everyone is subsampled to 40 deviants). It did not drive our result, but it is a ready-made confound: check it and report it. Fewer participants contribute at higher trial counts in the right panel.
-[Sources]
-- LISTEN-claude results/decoding_v2/stats.md, section 5; results/decoding_v2/participants.csv.
-[/Sources]
 :::
 
 ## 5. Ask Who, Not Just How Many
@@ -270,9 +234,6 @@ Timing: 0:50 (cumulative 8:40). Median usable deviants: TD 94, V-ASD 84, MV-ASD 
 
 ::: {.notes}
 Timing: 1:00 (cumulative 9:40). A group mean above 0.5 does not say which people can be decoded. With a 200-permutation test per person, 27 of 78 (35%) are above chance; all groups exceed the 5% expected by chance (binomial p ≤ .011). The threshold depends strongly on trial count: people with ~20 deviants need AUC around 0.65.
-[Sources]
-- LISTEN-claude results/decoding_v2/stats.md, section 3.
-[/Sources]
 :::
 
 ## Revised Results
@@ -295,9 +256,6 @@ Groups did not differ (p = .16). Decoding is also above chance *before* sound on
 
 ::: {.notes}
 Timing: 0:50 (cumulative 10:30). Single-trial decoding is weak but above chance at the group level in every group (one-sided Wilcoxon, p ≤ .014). About a third of individuals pass their own test, and averaging inside the folds raises AUC everywhere. Groups did not differ significantly. One caveat, detailed in backup: the conditions are also decodable before the sound, and the ERP starts before 0 ms, which points to an event-timing or filtering problem to resolve before interpreting timing.
-[Sources]
-- LISTEN-claude results/decoding_v2/stats.md, sections 2, 3, 5, 6; baseline: results/decoding_v2/baseline_diagnostics.md.
-[/Sources]
 :::
 
 ## Recommendations
@@ -312,11 +270,6 @@ Timing: 0:50 (cumulative 10:30). Single-trial decoding is weak but above chance 
 
 ::: {.notes}
 Timing: 1:00 (cumulative 11:30). Seven cheap checks; each one changed our interpretation of this dataset.
-[Sources]
-- Prediction target and unit of analysis: codex draft, Varoquaux et al. 2017.
-- Claim-to-source ledger: kimi and codex drafts.
-- Remaining items: LISTEN-claude results/decoding_v2/stats.md and baseline_diagnostics.md.
-[/Sources]
 :::
 
 ## Limitations & Next Steps
@@ -327,9 +280,6 @@ Timing: 1:00 (cumulative 11:30). Seven cheap checks; each one changed our interp
 
 ::: {.notes}
 Timing: 0:45 (cumulative 12:15). First, check the event timing: decoding and the ERP both start before 0 ms. Then ask whether lower decodability in some participants reflects noise or more variable auditory processing; repeat sessions give a first test–retest check. Associations with language scores are planned and not analyzed here.
-[Sources]
-- LISTEN-claude results/decoding_v2/baseline_diagnostics.md; LISTEN papers/Gatlinburg-2026.md (planned language analyses).
-[/Sources]
 :::
 
 ## Thank You
@@ -366,9 +316,6 @@ Timing: 0:15 (cumulative 12:30).
 
 ::: {.notes}
 Backup. The conditions are decodable before the sound (mean pre-stimulus AUC 0.549, p < .001; 53 of 78 participants peak before onset). Ruled out on 8 participants: classifier bias (label-shuffle null 0.501 ± 0.010), previous-trial carry-over, run-length position, drift, and epoch-filter smearing. Two candidates remain: event markers placed after the true sound onset, or a 1 Hz high-pass on continuous data followed by baseline correction (van Driel, Olivers & Fahrenfort, 2021). The events files have no audio-onset channel, so this could not be checked.
-[Sources]
-- LISTEN-claude results/decoding_v2/stats.md, section 4; results/decoding_v2/baseline_diagnostics.md.
-[/Sources]
 :::
 
 ## Time Course And ERP By Group {#backup-time-course}
@@ -380,10 +327,7 @@ Bars: clusters above chance (one-sided cluster permutation). In MV-ASD and AS, s
 :::
 
 ::: {.notes}
-Backup. The grand-average ERP shows no clear N1 after onset, and the deviant negativity begins around −100 ms. A sharp onset like this is more typical of a timing offset than a filter smear. If the markers are offset, the fixed MMN windows used in the notebooks (100–300 ms) are misplaced too.
-[Sources]
-- LISTEN-claude results/decoding_v2/stats.md, section 4; results/decoding_v2/baseline_diagnostics.md, "Grand-average ERP timing".
-[/Sources]
+Backup. The grand-average ERP shows no clear N1 after onset, and the deviant negativity begins around −100 ms. A sharp onset like this is more typical of a timing offset than a filter smear. If the markers are offset, fixed MMN windows (100–300 ms) are misplaced too.
 :::
 
 ## Baseline Diagnostics {#backup-diagnostics}
@@ -402,9 +346,6 @@ Backup. The grand-average ERP shows no clear N1 after onset, and the deviant neg
 
 ::: {.notes}
 Backup. Diagnostics run on 8 participants with the time-resolved decoder. None of these controls removes the pre-stimulus effect.
-[Sources]
-- LISTEN-claude results/decoding_v2/baseline_diagnostics.md; scripts/diag_baseline_1_filtering.py, diag_baseline_2_confounds.py, diag_baseline_3_null.py.
-[/Sources]
 :::
 
 ## Analysis Details {#backup-methods}
@@ -424,10 +365,7 @@ Backup. Diagnostics run on 8 participants with the time-resolved decoder. None o
 :::
 
 ::: {.notes}
-Backup. The pipeline was fixed in advance from an 8-participant pilot; no tuning. The original pipeline used all 701 samples at 1 kHz with unregularized LDA and single 5-fold CV, and kept channels flagged bad in its features (interpolation was commented out); the re-analysis drops them.
-[Sources]
-- LISTEN-claude scripts/decode_v2.py and scripts/analyze_v2.py.
-[/Sources]
+Backup. The pipeline was fixed in advance from an 8-participant pilot; no tuning. The original pipeline used all 701 samples at 1 kHz with unregularized LDA and single 5-fold CV, and kept channels flagged bad in its features; the re-analysis drops them.
 :::
 
 ## References {#backup-references}
