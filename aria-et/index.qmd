@@ -9,7 +9,7 @@ format:
       - ../_assets/css/custom.scss
       - aria-et.scss
 institute: University of California Los Angeles
-subtitle: Running the ABCCT eye-tracking battery in our lab
+subtitle: Tasks, equipment, protocol, processing
 title: "ARIA-EyeTracking"
 title-slide-attributes:
   data-notes: "Timing: 0:20 (cumulative 0:20). Main talk is about 28 minutes. Backup slides follow the Questions slide."
@@ -22,7 +22,7 @@ title-slide-attributes:
 2. `Equipment`<br>What we ship; what sites buy
 3. `A session`<br>The GUI, step by step
 4. `Saved data`<br>Files, upload, checks, cleaning
-5. `In the lab`<br>Kit, updates, and checklist
+5. `Sharing`<br>Kit, updates, and checklist
 :::
 
 ::: {.notes}
@@ -346,7 +346,7 @@ Keep the default settings and click **Run calibration**.
 Timing: 0:30 (cumulative 13:45). The header now shows the open session. The settings are locked; Restore defaults puts them back if someone changed them. The Latest calibration quality and Calibration history cards fill after each calibration.
 :::
 
-## 3. Calibration: Child-Friendly
+## 3. Calibration
 
 ::: {.image-text-slide}
 
@@ -355,7 +355,7 @@ Timing: 0:30 (cumulative 13:45). The header now shows the open session. The sett
 :::
 
 ::: {.text-panel}
-- Animated targets with sound (DeToX)
+- Animated targets with sound
 - 5 points: four corners and the centre
 - **Number key**: show a target
 - **Space**: collect gaze when the child looks
@@ -543,7 +543,7 @@ Timing: 1:00 (cumulative 22:00). We run the same validation script on each uploa
 Timing: 0:45 (cumulative 22:45). After the checks, the data go through eyeQuality, an R package for transparent and reproducible eye-tracking preprocessing. The steps run in this order: invalid and offscreen gaze are removed, short gaps are interpolated, blinks are found with a noise-based method (Hershman, Henik, and Cohen, 2018), the two eyes are combined and smoothed, and the velocity is used for an I-VT classification of fixations and saccades. Each file also gets summary quality metrics and three standard plots. Today eyeQuality reads Tobii Studio and Tobii Pro Lab exports, so it needs a reader for the ARIA-ET BIDS files before our data can go through it.
 :::
 
-# Using It In The Lab
+# Sharing the equipment with you.
 
 ## From Central Team To Site
 
