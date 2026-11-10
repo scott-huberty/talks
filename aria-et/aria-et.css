@@ -1,0 +1,173 @@
+/* Layouts specific to the ARIA-ET talk (shared styles: _assets/css/custom.scss). */
+
+.reveal .logo-banner img {
+  display: block;
+  width: 70%;
+  margin: 0.6rem auto 1rem;
+  border-radius: 0.4rem;
+}
+
+.reveal .image-panel video {
+  display: block;
+  width: 100%;
+  max-height: 29rem;
+  margin: 0 auto;
+}
+
+.reveal .result-panel img {
+  max-height: 20rem;
+}
+
+.reveal .wide-figure img {
+  display: block;
+  width: 100%;
+  max-height: 19rem;
+  object-fit: contain;
+  margin: 0.4rem auto 0.6rem;
+}
+
+.reveal .stacked-figures img {
+  display: block;
+  width: 100%;
+  max-height: 9rem;
+  object-fit: contain;
+  margin: 0.3rem 0;
+}
+
+.reveal .compact-table {
+  font-size: 0.6em;
+}
+
+.reveal .compact-table table {
+  width: 100%;
+}
+
+.reveal .source-line {
+  margin-top: 0.6rem;
+  font-size: 0.5em;
+  color: var(--talk-muted);
+}
+
+.reveal .checklist ul {
+  font-size: 0.85em;
+}
+
+.reveal .checklist li {
+  list-style: none;
+}
+
+.reveal .checklist li::before {
+  content: "\2713";
+  margin-right: 0.6rem;
+  color: var(--talk-accent);
+  font-weight: 700;
+}
+
+.reveal .process-row li {
+  font-size: 0.75em;
+}
+
+.reveal .guarantee {
+  margin: 1.2rem 0 0.6rem;
+  padding: 0.7rem 1rem;
+  border-left: 0.3rem solid var(--talk-accent);
+  background: var(--talk-panel);
+  font-size: 0.7em;
+  line-height: 1.35;
+}
+
+.reveal .guarantee p {
+  margin: 0;
+}
+
+.reveal .distribution-diagram {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) 8rem minmax(0, 1fr) 8rem minmax(0, 0.9fr);
+  gap: 0.7rem 0.4rem;
+  align-items: stretch;
+  margin-top: 0.6rem;
+  font-size: 0.58em;
+}
+
+.reveal .distribution-diagram p {
+  margin: 0;
+}
+
+.reveal .dist-head {
+  font-weight: 800;
+  font-size: 1.25em;
+  color: var(--talk-accent);
+  border-bottom: 0.18rem solid var(--talk-accent);
+  padding-bottom: 0.2rem;
+}
+
+.reveal .dist-box {
+  padding: 0.55rem 0.75rem;
+  border: 1px solid var(--talk-border);
+  background: var(--talk-panel);
+  line-height: 1.3;
+}
+
+.reveal .dist-box strong {
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.reveal .dist-arrow {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  color: var(--talk-muted);
+  line-height: 1.25;
+}
+
+.reveal .dist-arrow::after {
+  content: "\2192";
+  font-size: 1.8em;
+  line-height: 1;
+  color: var(--talk-accent);
+}
+
+.reveal .compact-bullets {
+  font-size: 0.8em;
+}
+
+.reveal .stat-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.8rem;
+  margin: 0.4rem 0 0.8rem;
+}
+
+.reveal .stat {
+  padding: 0.5rem 0.8rem;
+  border-top: 0.22rem solid var(--talk-accent);
+  background: var(--talk-panel);
+  font-size: 0.6em;
+  line-height: 1.3;
+}
+
+.reveal .stat p {
+  margin: 0;
+}
+
+.reveal .stat strong {
+  font-size: 1.9em;
+  color: var(--talk-accent-strong, #006860);
+}
+
+.reveal .gui-shot img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  max-height: 31rem;
+  margin: 0 auto;
+  border: 1px solid var(--talk-border);
+}
+
+.reveal .gui-caption {
+  margin-top: 0.6rem;
+  font-size: 0.65em;
+  text-align: center;
+}

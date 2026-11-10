@@ -1,0 +1,78 @@
+/*-- scss:defaults --*/
+
+// ARIA-ET light branding. Colours come from PALETTE in
+// aria-et/src/aria_et/gui/theme.py; the font is the font of the GUI and the docs.
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800&display=swap");
+
+$aria-teal: #006860;
+$aria-teal-dark: #004d47;
+$aria-green: #6cc351;
+$aria-blue: #356584;
+$aria-slate: #5f6e78;
+$aria-periwinkle: #878cbe;
+$aria-black: #000000;
+$aria-surface-alt: #f4f6f7;
+$aria-surface-selected: #e6f0ef;
+$aria-border: #d8dee1;
+
+$body-bg: #ffffff;
+$body-color: $aria-black;
+$link-color: $aria-blue;
+$font-family-sans-serif: "Nunito Sans", "Segoe UI", sans-serif;
+$font-family-monospace: "Courier New", ui-monospace, Consolas, monospace;
+$presentation-heading-font: "Nunito Sans", "Segoe UI", sans-serif;
+$presentation-heading-color: $aria-teal;
+$presentation-heading-font-weight: 800;
+$code-color: $aria-teal-dark;
+$code-block-bg: $aria-surface-alt;
+$code-block-border-color: $aria-border;
+$selection-bg: $aria-surface-selected;
+
+/*-- scss:rules --*/
+
+// Replace the dark-theme values of the shared _assets/css/custom.scss.
+:root {
+  --talk-accent: #{$aria-green};
+  --talk-muted: #{$aria-slate};
+  --talk-panel: #{$aria-surface-alt};
+  --talk-border: #{$aria-border};
+}
+
+.reveal code {
+  color: $aria-teal-dark;
+}
+
+.reveal .three-part-slide strong,
+.reveal .workflow-box strong,
+.reveal .implementation-box strong,
+.reveal .workflow-step {
+  color: $aria-teal;
+}
+
+.reveal .process-row li {
+  border-top-color: $aria-teal;
+}
+
+.reveal .slide-menu-button a,
+.reveal .slide-menu-button a:hover,
+.reveal .slide-menu-button a:visited {
+  color: $aria-teal;
+}
+
+.reveal .slide-menu-button .fa-bars::before {
+  background-color: $aria-teal;
+}
+
+.reveal table th {
+  color: $aria-teal;
+}
+
+.reveal .title-slide h1,
+.reveal .quarto-title-block h1 {
+  color: $aria-teal;
+}
+
+.reveal .footer,
+.reveal .slide-number {
+  color: $aria-slate;
+}
