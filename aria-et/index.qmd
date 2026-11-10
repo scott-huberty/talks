@@ -12,7 +12,7 @@ institute: University of California Los Angeles
 subtitle: Tasks, equipment, protocol, processing
 title: "ARIA-EyeTracking"
 title-slide-attributes:
-  data-notes: "Timing: 0:20 (cumulative 0:20). Main talk is about 28 minutes. Backup slides follow the Questions slide."
+  data-notes: "Timing: 0:20 (cumulative 0:20). Main talk is about 27 minutes. Backup slides follow the Questions slide."
 ---
 
 ## Overview
@@ -543,6 +543,21 @@ Timing: 1:00 (cumulative 22:00). We run the same validation script on each uploa
 Timing: 0:45 (cumulative 22:45). After the checks, the data go through eyeQuality, an R package for transparent and reproducible eye-tracking preprocessing. The steps run in this order: invalid and offscreen gaze are removed, short gaps are interpolated, blinks are found with a noise-based method (Hershman, Henik, and Cohen, 2018), the two eyes are combined and smoothed, and the velocity is used for an I-VT classification of fixations and saccades. Each file also gets summary quality metrics and three standard plots. Today eyeQuality reads Tobii Studio and Tobii Pro Lab exports, so it needs a reader for the ARIA-ET BIDS files before our data can go through it.
 :::
 
+
+## Pilot Data: Pupillary Light Reflex
+
+::: {.gui-shot}
+![](figures/pilot_plr_evoked.png){fig-alt="Average pupil size change around 18 flashes for one pilot participant: a flat baseline, a constriction that starts about 0.27 s after the flash and reaches 1.5 mm at 0.74 s, then a slow recovery. The left eye, the right eye, and their mean overlap."}
+:::
+
+::: {.gui-caption}
+One adult pilot, 18 flashes: read with mne-bids, blinks interpolated in MNE.
+:::
+
+::: {.notes}
+Timing: 0:45 (cumulative 23:30). This is our own pilot recording read from the BIDS export with the mne-bids eye-tracking reader. Missing samples were interpolated as blinks, and the data were epoched around each flash. The pupil starts to constrict about 0.27 s after the flash and reaches 1.5 mm at about 0.75 s; both eyes agree. One caveat: the current export does not align the event times with the gaze times (aria-et issue 100), so for this plot the events were shifted by the task-clock time of the first event, about 10 s.
+:::
+
 # Sharing the equipment with you.
 
 ## From Central Team To Site
@@ -636,7 +651,7 @@ The raw runs and the BIDS export of each session.
 :::
 
 ::: {.notes}
-Timing: 1:15 (cumulative 24:00). The central team buys the acquisition laptop and the light meter, installs the ARIA-ET release with the Tobii software, configures the laptop, and does the hardware sign-off before it ships. Thus each site starts with the same software, the same configuration, and the same light meter. The site does not install software on its own: for each update, IT meets a site team member on a call and walks them through the installation. After each session, the site uploads the session folder, with the raw runs and the BIDS export, to LASSO. We need the raw runs for the data checks. The site supplies the tracker and the stimulus monitor.
+Timing: 1:15 (cumulative 24:45). The central team buys the acquisition laptop and the light meter, installs the ARIA-ET release with the Tobii software, configures the laptop, and does the hardware sign-off before it ships. Thus each site starts with the same software, the same configuration, and the same light meter. The site does not install software on its own: for each update, IT meets a site team member on a call and walks them through the installation. After each session, the site uploads the session folder, with the raw runs and the BIDS export, to LASSO. We need the raw runs for the data checks. The site supplies the tracker and the stimulus monitor.
 :::
 
 ## Software Updates
@@ -656,7 +671,7 @@ Timing: 1:15 (cumulative 24:00). The central team buys the acquisition laptop an
 - One release for a full study wave; never update during a session
 
 ::: {.notes}
-Timing: 1:00 (cumulative 25:00). The current release is 0.1.2. Two laptops with the same release have the same packages, down to the build, so a difference between sites cannot come from the software. The laptop needs no Python and no internet connection for the installation. Three components are outside the lock: Tobii Eye Tracker Manager, Tobii Pro Network Runtime, and the tracker firmware. Each run records their versions in sys_info.json, and IT checks them on the call with sys-info. The new version installs next to the old one, so the site can go back if the new version does not open.
+Timing: 1:00 (cumulative 25:45). The current release is 0.1.2. Two laptops with the same release have the same packages, down to the build, so a difference between sites cannot come from the software. The laptop needs no Python and no internet connection for the installation. Three components are outside the lock: Tobii Eye Tracker Manager, Tobii Pro Network Runtime, and the tracker firmware. Each run records their versions in sys_info.json, and IT checks them on the call with sys-info. The new version installs next to the old one, so the site can go back if the new version does not open.
 :::
 
 ## Status And Next Steps
@@ -666,13 +681,13 @@ Timing: 1:00 (cumulative 25:00). The current release is 0.1.2. Two laptops with 
 - Ship laptops to sites
 
 ::: {.notes}
-Timing: 1:00 (cumulative 27:00). Until ABCCT gives permission, the installer and stimuli stay in the lab. The PsychoPy upgrade changes how movies are decoded, so we will re-qualify the stimuli before we release it. Send problems with the run folder and session.log; those two things let me find most causes.
+Timing: 1:00 (cumulative 26:45). Until ABCCT gives permission, the installer and stimuli stay in the lab. The PsychoPy upgrade changes how movies are decoded, so we will re-qualify the stimuli before we release it. Send problems with the run folder and session.log; those two things let me find most causes.
 :::
 
 ## Questions?
 
 ::: {.notes}
-Timing: 0:30 (cumulative 27:30).
+Timing: 0:30 (cumulative 27:15).
 :::
 
 # Backup
