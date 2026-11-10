@@ -171,3 +171,7 @@
   font-size: 0.65em;
   text-align: center;
 }
+
+.reveal .process-row.three-steps {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
