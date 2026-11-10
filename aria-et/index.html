@@ -1,0 +1,1789 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<link href="../_assets/images/favicon.ico" rel="icon">
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-html/tabby.min.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.11.9">
+
+  <meta name="author" content="Scott Huberty, PhD">
+  <meta name="dcterms.date" content="2026-11-10">
+  <title>Talks – ARIA-EyeTracking</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reveal.css">
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-0b7c5ff3e4a06c77a92580bb8bc75326.css">
+  <link rel="stylesheet" href="aria-et.css">
+  <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section data-footer="false" data-notes="Timing: 0:20 (cumulative 0:20). Main talk is about 28 minutes. Backup slides follow the Questions slide." class="quarto-title-block center">
+  <h1 class="title">ARIA-EyeTracking</h1>
+  <p class="subtitle">Running the ABCCT eye-tracking battery in our lab</p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Scott Huberty, PhD
+</div>
+        <p class="quarto-title-affiliation">
+            University of California Los Angeles
+          </p>
+    </div>
+</div>
+
+  <p class="date">2026-11-10</p>
+</section>
+<section class="slide level2">
+<h2>Overview</h2>
+<div class="process-row">
+<ol type="1">
+<li class="fragment"><code>ABCCT</code><br>The battery, its tasks, and its findings</li>
+<li class="fragment"><code>Equipment</code><br>What we ship; what sites buy</li>
+<li class="fragment"><code>A session</code><br>The GUI, step by step</li>
+<li class="fragment"><code>Saved data</code><br>Files, upload, checks, cleaning</li>
+<li class="fragment"><code>In the lab</code><br>Kit, updates, and checklist</li>
+</ol>
+</div>
+<aside class="notes">
+<p>Timing: 0:45 (cumulative 1:05). First, the ABCCT battery that ARIA-ET implements and what it showed. Then the equipment each site gets, and a walk through one session in the GUI. Then what ARIA-ET saves and how it protects the data. Last, how we keep the sites the same: software updates, the checks on each uploaded session, and preprocessing.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section>
+<section class="title-slide slide level1 center">
+<h1>ABCCT</h1>
+
+</section>
+<section class="slide level2">
+<h2>ABCCT</h2>
+<p><strong>A</strong>utism <strong>B</strong>iomarkers <strong>C</strong>onsortium for <strong>C</strong>linical <strong>T</strong>rials</p>
+<div class="columns compact-bullets">
+<div class="column" style="width:50%;">
+<p><strong>The consortium</strong></p>
+<ul>
+<li class="fragment">Five US sites</li>
+<li class="fragment">autistic and typically developing youth
+<ul>
+<li class="fragment">6-11 years of age.</li>
+<li class="fragment">IQ 60–150 (typical: 80–150)</li>
+</ul></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><strong>The tasks</strong></p>
+<ul>
+<li class="fragment">4 tasks, 2 constructs:
+<ul>
+<li class="fragment">social attention: gaze to faces (3 tasks)</li>
+<li class="fragment">autonomic function: pupil light reflex (1 task)</li>
+</ul></li>
+</ul>
+</div></div>
+<aside class="notes">
+<p>Timing: 1:00 (cumulative 2:05). ABCCT is the Autism Biomarkers Consortium for Clinical Trials, funded by NIMH (U19 MH108206, PI McPartland). Its question: can a lab measure such as eye tracking or EEG serve as an objective outcome in autism clinical trials? The study was observational and ran at five sites: Yale, UCLA, Boston Children’s Hospital / Harvard, University of Washington, and Duke. Each visit took two days, and the eye-tracking battery ran on both days. The age range was narrow to limit developmental variability and to make data collection likely to succeed. Exclusions in both groups: genetic or neurological conditions, and sensory problems that would stop the protocol.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section class="slide level2">
+<h2>Activity Monitoring</h2>
+<div class="image-text-slide">
+<div class="image-panel">
+<p><video data-src="figures/am_clip.mp4" muted="" alt="Five seconds of an Activity Monitoring video: two women sit on a rug and play with toys." controls=""><a href="figures/am_clip.mp4">Video</a></video></p>
+</div>
+<div class="text-panel">
+<ul>
+<li class="fragment">Two adults play with toys</li>
+<li class="fragment">8 video trials and 8 image trials</li>
+<li class="fragment">The actors look at the activity or at each other</li>
+<li class="fragment">Measure: gaze to faces vs.&nbsp;the activity</li>
+</ul>
+</div>
+</div>
+<aside class="notes">
+<p>Timing: 0:40 (cumulative 2:45). Five seconds of one trial. A video trial is 18 to 22 seconds; an image trial is 10 seconds with the task soundtrack. In half the trials the actors look at the shared activity, and in the other half they look at each other.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section class="slide level2">
+<h2>Static Social Scenes</h2>
+<div class="result-comparison-slide">
+<div class="result-panel">
+<p><strong>Static scene</strong></p>
+<p><img data-src="figures/sss_scene.jpg" alt="Static scene stimulus: a woman holds a toddler in front of a birthday cake."></p>
+</div>
+<div class="result-panel">
+<p><strong>Visual search</strong></p>
+<p><img data-src="figures/sss_search.jpg" alt="Visual search stimulus: a face among objects such as a phone, a car, and a bird on a white background."></p>
+</div>
+</div>
+<ul>
+<li class="fragment">12 trials; the two trial types alternate</li>
+</ul>
+<aside class="notes">
+<p>Timing: 0:40 (cumulative 3:25). Static scenes show people in everyday scenes on a black background. Visual search shows one face among objects on a white background, and asks how fast and how often the child finds the face.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section class="slide level2">
+<h2>Social Interactive</h2>
+<div class="image-text-slide">
+<div class="image-panel">
+<p><video data-src="figures/si_clip.mp4" alt="Five seconds of a Social Interactive video: a boy and a girl sit on a mat and play with cards." controls=""><a href="figures/si_clip.mp4">Video</a></video></p>
+</div>
+<div class="text-panel">
+<ul>
+<li class="fragment">Two children play</li>
+<li class="fragment">22 video trials:
+<ul>
+<li class="fragment">11 parallel play</li>
+<li class="fragment">11 cooperative play</li>
+</ul></li>
+<li class="fragment">Measure: gaze to faces</li>
+</ul>
+</div>
+</div>
+<aside class="notes">
+<p>Timing: 0:40 (cumulative 4:05). Five seconds of one trial. In parallel play the children play next to each other; in cooperative play they play together. This is the longest task, at 6 minutes.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section class="slide level2">
+<h2>Pupillary Light Reflex</h2>
+<div class="image-text-slide">
+<div class="image-panel">
+<p><video data-src="figures/plr_clip.mp4" alt="Five seconds of a Pupillary Light Reflex trial: a small fixation stimulus on a black screen, then a short white flash." controls=""><a href="figures/plr_clip.mp4">Video</a></video></p>
+</div>
+<div class="text-panel">
+<ul>
+<li class="fragment">Small attention stimulus on a black screen</li>
+<li class="fragment">A white flash of 4 frames</li>
+<li class="fragment">18 trials, 6.2 s each</li>
+<li class="fragment">Measure: pupil constriction and its latency</li>
+</ul>
+</div>
+</div>
+<aside class="notes">
+<p>Timing: 0:40 (cumulative 4:45). The flash comes at about 2.7 seconds in this clip. The pupil response depends on the screen brightness and the room light, which is why we are matching the ABCCT illuminance on our monitor (issue 94) and writing a room-light procedure (issue 97).</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section class="slide level2">
+<h2>ABCCT Eyetracking findings</h2>
+<div class="compact-bullets">
+<ul>
+<li class="fragment"><strong>OMI</strong>: Oculomotor Index of Gaze to Human Faces</li>
+<li class="fragment">Mean % of looking time on faces in Activity Monitoring, Social Interactive, and Static Social Scenes</li>
+<li class="fragment">In autism: higher OMI goes with fewer symptoms and higher verbal IQ (small effects)</li>
+<li class="fragment">Accepted into the FDA Biomarker Qualification Program</li>
+</ul>
+</div>
+<div class="source-line">
+<p>Shic et al.&nbsp;(2022), <em>Molecular Autism</em>. 280 autistic and 119 typically developing children.</p>
+</div>
+<aside class="notes">
+<p>Timing: 1:15 (cumulative 6:00). Shic and colleagues tested the five eye-tracking tasks against five biomarker properties: acquisition rate, construct validity, six-week stability, group discrimination, and relation to clinical measures. The OMI was defined in advance: it is the equal-weight average of the percent of looking time on faces in the three social tasks, chosen because those variables loaded together in the feasibility study. Valid data exceeded 95 % in both groups. The OMI was stable from baseline to six weeks (ICC 0.84 autism, 0.83 typical). Autistic children looked at faces less: 24.4 % versus 30.9 % (d = 0.79), and the difference held after control for age, IQ, data quality, and site. Associations with clinical measures were small, so the OMI is not a proxy for symptoms; it measures attention to faces with precision. A Letter of Intent for the OMI was accepted by the FDA CDER Biomarker Qualification Program. Biological Motion was the weakest task and was later dropped from the battery. Because this battery is validated, we want our data to be comparable to ABCCT data.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section class="slide level2">
+<h2>How We Differ From ABCCT</h2>
+<div class="compact-table">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: left;">ABCCT</th>
+<th style="text-align: left;">ARIA-ET</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Tracker</td>
+<td style="text-align: left;">EyeLink 1000 Plus, 500 Hz</td>
+<td style="text-align: left;">Tobii Pro Spectrum</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Tasks</td>
+<td style="text-align: left;">AM, SI, SS, <strong>Biological Motion</strong>, PLR</td>
+<td style="text-align: left;">AM, SI, SS, PLR</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Task order</td>
+<td style="text-align: left;">Tasks interleaved</td>
+<td style="text-align: left;">One run per task</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Trials split across 2 days/sessions</td>
+<td style="text-align: left;">1 session</td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<aside class="notes">
+<p>Timing: 1:30 (cumulative 7:30). These are decisions that affect comparability with ABCCT data. Biological Motion was removed from the ABCCT battery in MOP version 5. The task order is the largest difference: ABCCT interleaved blocks from different tasks to reduce fatigue. We run each task as a separate run. If the study needs a fixed or counterbalanced order, we set it in the protocol, not in the software.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section class="slide level2">
+<h2>The ARIA Eyetracking Battery</h2>
+<div class="compact-table">
+<table class="caption-top">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Task</th>
+<th style="text-align: right;">Trials</th>
+<th style="text-align: right;">Duration</th>
+<th style="text-align: left;">Measures</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Activity Monitoring</td>
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">4.7 min</td>
+<td style="text-align: left;">Gaze to faces vs.&nbsp;the shared activity</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Static Social Scenes</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">3.5 min</td>
+<td style="text-align: left;">Gaze to people in scenes; visual search</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Social Interactive</td>
+<td style="text-align: right;">22</td>
+<td style="text-align: right;">6.0 min</td>
+<td style="text-align: left;">Gaze to faces in parallel and cooperative play</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Pupillary Light Reflex</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: right;">1.9 min</td>
+<td style="text-align: left;">Pupil constriction after a light flash</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Total</strong></td>
+<td style="text-align: right;"><strong>68</strong></td>
+<td style="text-align: right;"><strong>16.1 min</strong></td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="source-line">
+<p>Duration is the nominal stimulus time. It does not include calibration, positioning, or breaks. Preview videos: User guide, Task reference.</p>
+</div>
+<aside class="notes">
+<p>Timing: 0:45 (cumulative 8:15). The first three tasks make up the OMI. PLR measures the autonomic response. Each task page in the docs has a preview video, so you can see the stimuli before a session. Plan for more than 16 minutes in the room: calibration, positioning before each task, and breaks add time.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section></section>
+<section>
+<section class="title-slide slide level1 center">
+<h1>Equipment</h1>
+
+</section>
+<section class="slide level2">
+<h2>What Each Site Uses</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong><i class="fa-solid fa-truck-fast" aria-label="truck-fast"></i> We buy and ship</strong></p>
+<ul>
+<li class="fragment"><i class="fa-solid fa-laptop" aria-label="laptop"></i> Acquisition laptop, with ARIA-ET installed</li>
+<li class="fragment"><i class="fa-solid fa-gauge" aria-label="gauge"></i> Light meter</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><strong><i class="fa-solid fa-building" aria-label="building"></i> The site buys</strong></p>
+<ul>
+<li class="fragment"><i class="fa-solid fa-eye" aria-label="eye"></i> Tobii Pro Spectrum eye tracker</li>
+</ul>
+</div></div>
+<aside class="notes">
+<p>Timing: 0:30 (cumulative 8:45). We buy the laptop and the light meter centrally, set them up, and ship them, so each site has the same software and measures the light the same way. The site buys its own Tobii Pro Spectrum. Later in the talk we come back to how updates and data move between the sites and us.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section></section>
+<section>
+<section class="title-slide slide level1 center">
+<h1>A Session, Start To Finish</h1>
+
+</section>
+<section class="slide level2">
+<h2>Five Steps In The GUI</h2>
+<div class="process-row">
+<ol type="1">
+<li class="fragment"><code>Setup</code><br>Open the session</li>
+<li class="fragment"><code>Hardware</code><br>Check the tracker</li>
+<li class="fragment"><code>Calibration</code><br>Calibrate and validate</li>
+<li class="fragment"><code>Battery</code><br>Run the four tasks</li>
+<li class="fragment"><code>Export</code><br>Write BIDS files</li>
+</ol>
+</div>
+<aside class="notes">
+<p>Timing: 0:45 (cumulative 9:30). The sidebar follows the order of a session. Each page gets a check mark when it is complete. The next slides go through each step.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section class="slide level2">
+<h2>Step 1: Setup</h2>
+<div class="gui-shot">
+<p><img data-src="figures/gui_step1_setup.png" alt="ARIA-ET Setup page: Subject and Session fields, the Open session button, and the Lab configuration card with a warning that only 1 display was detected."></p>
+</div>
+<div class="gui-caption">
+<p>Type the subject and session, click <strong>Open session</strong>, and check <strong>Lab configuration</strong>.</p>
+</div>
+<aside class="notes">
+<p>Timing: 0:30 (cumulative 10:00). The sidebar lists the five steps in order. Here the laptop has only one display, so the Lab configuration card shows a warning. With this warning, do not collect data.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section class="slide level2">
+<h2>1. Setup: Open A Session</h2>
+<div class="image-text-slide">
+<div class="image-panel">
+<p><img data-src="figures/gui_session_has_data.png" alt="Dialog Session already has data, with the buttons Use ses-02 instead, Continue ses-01, and Cancel."></p>
+</div>
+<div class="text-panel">
+<ul>
+<li class="fragment">Subject: letters and numbers only</li>
+<li class="fragment">Session: <code>01</code> for the first visit</li>
+<li class="fragment">Existing data? Choose the next session or continue</li>
+<li class="fragment">Check the <strong>Lab configuration</strong> card
+<ul>
+<li class="fragment">a display warning means: do not collect</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<aside class="notes">
+<p>Timing: 1:00 (cumulative 11:00). Labels become BIDS file names, so the page refuses hyphens and spaces; Fix labels removes them. If the session already has runs, the GUI asks if you want the next free session or to add runs to this one. ARIA-ET never overwrites a run.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section class="slide level2">
+<h2>Step 2: Hardware</h2>
+<div class="gui-shot">
+<p><img data-src="figures/gui_step2_hardware.png" alt="ARIA-ET Hardware page: tracker status Unknown, the saved tracker for this laptop, the tracker address, and the Check tracker button."></p>
+</div>
+<div class="gui-caption">
+<p>Click <strong>Check tracker</strong>. The GUI connects to the tracker that is saved for this laptop.</p>
+</div>
+<aside class="notes">
+<p>Timing: 0:30 (cumulative 11:30). The page shows the serial number and the address of the saved tracker. Use Connect to this address instead only if the central team tells you to.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section class="slide level2">
+<h2>2. Hardware: Check The Tracker</h2>
+<div class="image-text-slide">
+<div class="image-panel">
+<p><img data-src="figures/gui_child_position_states.png" alt="Four Child position panels with the status Position good, Too close, Too far, and Move to centre."></p>
+</div>
+<div class="text-panel">
+<ul>
+<li class="fragment">Click <strong>Check tracker</strong>; the status shows <strong>Connected</strong></li>
+<li class="fragment">The <strong>Child position</strong> panel stays live on every page
+<ul>
+<li class="fragment">Position good, Too close, Too far, Move to centre</li>
+</ul></li>
+<li class="fragment">It shows where the eyes are, not where the child looks</li>
+</ul>
+</div>
+</div>
+<aside class="notes">
+<p>Timing: 1:00 (cumulative 12:30). The GUI saves the tracker for the laptop. The Child position panel reads the tracker’s user position stream during calibration and during runs. Use it to see if the child slides down or leans forward during a task. The distance thresholds are first estimates; tell me if they do not match what you see in the room.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section class="slide level2">
+<h2>When The Tracker Cannot Find The Eyes</h2>
+<div class="image-text-slide">
+<div class="image-panel">
+<p><img data-src="figures/gui_eye_image.png" alt="Two Eye image panels. On the left, the tracker finds the eyes. On the right, the status is Eyes not found and the image shows the full face."></p>
+</div>
+<div class="text-panel">
+<ul>
+<li class="fragment">Click <strong>Show eye image</strong></li>
+<li class="fragment">Look for the cause:
+<ul>
+<li class="fragment">glasses reflections</li>
+<li class="fragment">eyelids, hair, a hand</li>
+</ul></li>
+<li class="fragment">Nothing is saved</li>
+</ul>
+</div>
+</div>
+<aside class="notes">
+<p>Timing: 0:45 (cumulative 13:15). When the tracker finds the eyes, the image shows only the eyes. When it does not, it shows the camera frame with the face. This is new in 0.1.2. The images are not recorded and do not change the recording.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section class="slide level2">
+<h2>Step 3: Calibration</h2>
+<div class="gui-shot">
+<p><img data-src="figures/gui_step3_calibration.png" alt="ARIA-ET Calibration page: locked calibration settings, the Run calibration button, and empty Latest calibration quality and Calibration history cards."></p>
+</div>
+<div class="gui-caption">
+<p>Keep the default settings and click <strong>Run calibration</strong>.</p>
+</div>
+<aside class="notes">
+<p>Timing: 0:30 (cumulative 13:45). The header now shows the open session. The settings are locked; Restore defaults puts them back if someone changed them. The Latest calibration quality and Calibration history cards fill after each calibration.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section class="slide level2">
+<h2>3. Calibration: Child-Friendly</h2>
+<div class="image-text-slide">
+<div class="image-panel">
+<p><video data-src="figures/calibration_clip.mp4" muted="" alt="Simulated 5-point DeToX calibration: an animated animal target appears at the centre and at each corner, then the results screen shows the gaze samples near each target." controls=""><a href="figures/calibration_clip.mp4">Video</a></video></p>
+</div>
+<div class="text-panel">
+<ul>
+<li class="fragment">Animated targets with sound (DeToX)</li>
+<li class="fragment">5 points: four corners and the centre</li>
+<li class="fragment"><strong>Number key</strong>: show a target</li>
+<li class="fragment"><strong>Space</strong>: collect gaze when the child looks</li>
+<li class="fragment"><strong>Enter</strong>: compute, then accept</li>
+</ul>
+</div>
+</div>
+<aside class="notes">
+<p>Timing: 0:45 (cumulative 14:30). This clip is a simulation with a scripted mouse in place of the eyes, so the gaze points on the results screen are orange; with a child they are blue and pink for each eye. The sound loops while a target shows and fades out when you press Space. The pauses while DeToX collects gaze are shortened in this clip. If some points are poor, press their number keys and Space to collect them again.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section class="slide level2">
+<h2>Validation</h2>
+<div class="image-text-slide">
+<div class="image-panel">
+<p><img data-src="figures/validation_within_tolerance.png" alt="Validation results on the stimulus screen. The gaze of each eye is near each target, and the verdict is Within 2.5 degree tolerance: OK to proceed."></p>
+</div>
+<div class="text-panel">
+<ul>
+<li class="fragment">After you accept: one target per point</li>
+<li class="fragment">Press <strong>Space</strong> when the child looks</li>
+<li class="fragment">Table: accuracy, precision, data loss for each eye</li>
+</ul>
+</div>
+</div>
+<aside class="notes">
+<p>Timing: 0:45 (cumulative 15:15). After you accept, ARIA-ET shows validation targets in random order and measures how far the gaze is from each one. The blue and pink points are the left and right eye.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section class="slide level2">
+<h2>The 2.5° Rule</h2>
+<div class="image-text-slide">
+<div class="image-panel">
+<p><img data-src="figures/validation_above_tolerance.png" alt="Validation results with gaze far from three corner targets, and the verdict Above 2.5 degree tolerance: re-calibrate (C)."></p>
+</div>
+<div class="text-panel">
+<ul>
+<li class="fragment">Pass: <strong>one eye</strong> has <strong>every target</strong> within 2.5°</li>
+<li class="fragment">The worst target counts, not the mean</li>
+<li class="fragment">Above tolerance: press <strong>C</strong> and calibrate again</li>
+<li class="fragment">Accuracy usually gets worse during a session</li>
+</ul>
+</div>
+</div>
+<aside class="notes">
+<p>Timing: 1:15 (cumulative 16:30). The 2.5 degree value comes from ABCCT. ABCCT applied it to the mean error of each trial. We apply it to the worst target, right after calibration, which is stricter. A mean of 1.3 degrees can hide a corner at 3.1 degrees, and the corners matter because the stimuli fill the screen. Since accuracy drifts during a session, treat the rule as a minimum.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section class="slide level2">
+<h2>Step 4: Battery</h2>
+<div class="gui-shot">
+<p><img data-src="figures/gui_step4_battery.png" alt="ARIA-ET Battery page: the Before you can run checklist and one card for each task with Run and Preview buttons."></p>
+</div>
+<div class="gui-caption">
+<p><strong>Before you can run</strong> needs three check marks. Then click <strong>Run</strong> on a task card.</p>
+</div>
+<aside class="notes">
+<p>Timing: 0:30 (cumulative 17:00). In this screenshot the tracker check has not succeeded yet, so one item has no check mark. Preview shows a task without the tracker and records nothing. Each task has its own card.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section class="slide level2">
+<h2>4. Battery: Position, Then Run</h2>
+<div class="image-text-slide">
+<div class="image-panel">
+<p><video data-src="figures/positioning_clip.mp4" alt="Five seconds of the positioning screen in simulation: the distance marker moves from far to the centre of the bar, and the two eye dots move to the edge of the track box and back, above an animated video of animals." controls=""><a href="figures/positioning_clip.mp4">Video</a></video></p>
+</div>
+<div class="text-panel">
+<ul>
+<li class="fragment"><strong>Before you can run</strong> has three check marks</li>
+<li class="fragment"><strong>Presentation</strong> settings are the defaults</li>
+<li class="fragment">Click <strong>Run</strong> on a task card</li>
+<li class="fragment">Press <strong>Space</strong> when the child is in position</li>
+</ul>
+</div>
+</div>
+<aside class="notes">
+<p>Timing: 1:00 (cumulative 18:00). Each task starts with this positioning screen. This clip is a simulation: the eyes start too far, come to the good distance, drift to the side, and come back to the centre. The black marker on the green bar is the distance; the dots in the box are the eyes. The video holds the child’s attention while you adjust the chair. The task starts only when you press Space, and only after the first gaze sample arrives. If you see “Custom presentation settings are in use”, click Restore defaults before you collect data.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section class="slide level2">
+<h2>Monitor Each Run</h2>
+<div class="wide-figure">
+<p><img data-src="figures/gui_battery_complete.png" alt="Battery page with complete task cards, Run again buttons, and the sidebar item Battery 4/4."></p>
+</div>
+<ul>
+<li class="fragment">Each card shows trials done and trials left</li>
+<li class="fragment">End states: <strong>Complete</strong>, <strong>Incomplete</strong>, <strong>Failed</strong>, <strong>Stopped by operator</strong></li>
+<li class="fragment">A warning appears if gaze samples were dropped</li>
+</ul>
+<aside class="notes">
+<p>Timing: 1:15 (cumulative 19:15). A complete card shows the number of trials and gaze samples. If a run is incomplete or failed, the panel “Last run needs attention” shows the end of the log. In a normal run, dropped samples are 0 and you see no warning. If you see the warning, write it in the session notes.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section class="slide level2">
+<h2>Trial Progress And Dropped Samples</h2>
+<div class="stacked-figures">
+<p><img data-src="figures/battery_trial_progress.png" alt="Activity Monitoring dry run: trial 2 of 3, 2 left, 1 of 3 trials done."></p>
+<p><img data-src="figures/gui_dropped_samples.png" alt="Activity Monitoring task card with a warning banner that gives the number of dropped gaze samples."></p>
+</div>
+</section></section>
+<section>
+<section class="title-slide slide level1 center">
+<h1>What Gets Saved</h1>
+
+</section>
+<section class="slide level2">
+<h2>Data Folders</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb1-1"><a aria-label="1"></a>aria-et-data\</span>
+<span id="cb1-2"><a aria-label="2"></a>├── sourcedata\                         raw data, never overwritten</span>
+<span id="cb1-3"><a aria-label="3"></a>│   └── sub-01\ses-01\</span>
+<span id="cb1-4"><a aria-label="4"></a>│       ├── calibrations\calibration-&lt;time&gt;\</span>
+<span id="cb1-5"><a aria-label="5"></a>│       └── task-ActivityMonitoring_run-01\</span>
+<span id="cb1-6"><a aria-label="6"></a>│           ├── gaze.jsonl              one line per gaze sample</span>
+<span id="cb1-7"><a aria-label="7"></a>│           ├── eye_openness.jsonl      eyelid opening, in mm</span>
+<span id="cb1-8"><a aria-label="8"></a>│           ├── events.jsonl            trials and stimuli</span>
+<span id="cb1-9"><a aria-label="9"></a>│           ├── session.json            task, tracker, calibration in effect</span>
+<span id="cb1-10"><a aria-label="10"></a>│           ├── gaze_writer.json        received, written, dropped samples</span>
+<span id="cb1-11"><a aria-label="11"></a>│           ├── tracker.json            serial number, firmware, screen geometry</span>
+<span id="cb1-12"><a aria-label="12"></a>│           ├── sys_info.json           software versions</span>
+<span id="cb1-13"><a aria-label="13"></a>│           └── session.log             task output with time stamps</span>
+<span id="cb1-14"><a aria-label="14"></a>└── bids\</span>
+<span id="cb1-15"><a aria-label="15"></a>    └── sub-01\ses-01\beh\              events.tsv, eye1 / eye2 physio.tsv.gz</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<aside class="notes">
+<p>Timing: 1:15 (cumulative 20:30). Two trees. sourcedata is the raw record and is the copy to back up. bids is the analysis copy, made from sourcedata. Each run folder says which calibration was in effect, which tracker and firmware recorded it, and which software version ran. The BIDS physio sidecars contain the calibration error.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section class="slide level2">
+<h2>Upload To LASSO</h2>
+<div class="process-row three-steps">
+<ol type="1">
+<li class="fragment"><code>Export</code><br>Export the session to BIDS in the GUI</li>
+<li class="fragment"><code>Upload</code><br>Upload the session folder (raw runs and BIDS) to LASSO</li>
+<li class="fragment"><code>Check</code><br>We check each uploaded session</li>
+</ol>
+</div>
+<aside class="notes">
+<p>Timing: 0:30 (cumulative 21:00). After each session the site exports it in the GUI and uploads the whole session folder to LASSO: the raw runs and the BIDS export. We need the raw runs, because the checks on the next slide read session.json, the events, and the writer counts.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section class="slide level2">
+<h2>Checks On Each Uploaded Session</h2>
+<div class="compact-table">
+<table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Check</th>
+<th style="text-align: left;">What we compare</th>
+<th style="text-align: left;">FAIL when</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Run metadata</td>
+<td style="text-align: left;">system settings at runtime</td>
+<td style="text-align: left;">A value differs</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Trial count</td>
+<td style="text-align: left;">Trials vs.&nbsp;the task specification</td>
+<td style="text-align: left;">A count differs</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Missing data</td>
+<td style="text-align: left;">Gaps in the gaze; both eyes valid (reported)</td>
+<td style="text-align: left;">&gt; 0.5 % lost</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="source-line">
+<p>Each check reports FAIL, WARN, or INFO for each run. Script: <code>tools/validate_session.py</code>.</p>
+</div>
+<aside class="notes">
+<p>Timing: 1:00 (cumulative 22:00). We run the same validation script on each uploaded session. It compares the run files with what the task specification expects: the right task, all trials, the right mix of trial types, a calibration on record, and the same screen geometry as at calibration. It confirms that each gaze sample the tracker sent is on disk, that the rate is 600 Hz, and that the gaze covers the whole task. Missing data is measured as samples lost in gaps of the gaze time stamps, which fails above 0.5 %; any gap is a warning. The share of samples with both eyes valid is reported, not judged, because it depends on the child. Finally it checks that the BIDS files match the raw data and runs the BIDS validator. Today the script expects one complete run of each task; a session with a stopped run or a second run gets a FAIL on the run count and we review it by hand.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section class="slide level2">
+<h2>Preprocessing With eyeQuality</h2>
+<div class="process-row">
+<ol type="1">
+<li class="fragment"><code>Clean</code><br>Remove invalid and offscreen gaze</li>
+<li class="fragment"><code>Interpolate</code><br>Fill short gaps</li>
+<li class="fragment"><code>Blinks</code><br>Find blinks in the pupil data</li>
+<li class="fragment"><code>Select, smooth</code><br>Combine the eyes; smooth</li>
+<li class="fragment"><code>Classify</code><br>Fixations and saccades (<span style="white-space: nowrap">I-VT</span>)</li>
+</ol>
+</div>
+<div class="compact-bullets">
+<ul>
+<li class="fragment"><code>eyeQuality</code>: an R package for preprocessing and data quality, maintained by our study colleague Jed Ellison</li>
+<li class="fragment">Output: preprocessed gaze, pupil, and distance; quality metrics; standard plots</li>
+<li class="fragment">Next: a reader for ARIA-ET BIDS files</li>
+</ul>
+</div>
+<aside class="notes">
+<p>Timing: 0:45 (cumulative 22:45). After the checks, the data go through eyeQuality, an R package for transparent and reproducible eye-tracking preprocessing. The steps run in this order: invalid and offscreen gaze are removed, short gaps are interpolated, blinks are found with a noise-based method (Hershman, Henik, and Cohen, 2018), the two eyes are combined and smoothed, and the velocity is used for an I-VT classification of fixations and saccades. Each file also gets summary quality metrics and three standard plots. Today eyeQuality reads Tobii Studio and Tobii Pro Lab exports, so it needs a reader for the ARIA-ET BIDS files before our data can go through it.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section></section>
+<section>
+<section class="title-slide slide level1 center">
+<h1>Using It In The Lab</h1>
+
+</section>
+<section class="slide level2">
+<h2>From Central Team To Site</h2>
+<div class="distribution-diagram">
+<div class="dist-head">
+<p><i class="fa-solid fa-users" aria-label="users"></i> Central team</p>
+</div>
+<div class="dist-gap">
+
+</div>
+<div class="dist-head">
+<p><i class="fa-solid fa-laptop" aria-label="laptop"></i> Site</p>
+</div>
+<div class="dist-gap">
+
+</div>
+<div class="dist-head">
+<p><i class="fa-solid fa-building" aria-label="building"></i> LASSO</p>
+</div>
+<div class="dist-box">
+<p><strong>Set up the kit</strong></p>
+<p>Buy the laptop and the light meter. Install the ARIA-ET release and the Tobii software. Configure and sign off.</p>
+</div>
+<div class="dist-arrow">
+<p><i class="fa-solid fa-truck-fast" aria-label="truck-fast"></i><br>Ship the kit</p>
+</div>
+<div class="dist-box">
+<p><strong>Receive the kit</strong></p>
+<p><i class="fa-solid fa-laptop" aria-label="laptop"></i> Acquisition laptop<br><i class="fa-solid fa-gauge" aria-label="gauge"></i> Light meter</p>
+</div>
+<div class="dist-gap">
+
+</div>
+<div class="dist-gap">
+
+</div>
+<div class="dist-box">
+<p><strong>New release</strong></p>
+<p>A signed installer for each update.</p>
+</div>
+<div class="dist-arrow">
+<p><i class="fa-solid fa-video" aria-label="video"></i><br>Walk-through call</p>
+</div>
+<div class="dist-box">
+<p><strong>Install the update</strong></p>
+<p>With IT on the call.</p>
+</div>
+<div class="dist-gap">
+
+</div>
+<div class="dist-gap">
+
+</div>
+<div class="dist-gap">
+
+</div>
+<div class="dist-gap">
+
+</div>
+<div class="dist-box">
+<p><strong>Record and export</strong></p>
+<p>Each session, to BIDS.</p>
+</div>
+<div class="dist-arrow">
+<p><i class="fa-solid fa-cloud-arrow-up" aria-label="cloud-arrow-up"></i><br>Upload</p>
+</div>
+<div class="dist-box">
+<p><strong>Study data</strong></p>
+<p>The raw runs and the BIDS export of each session.</p>
+</div>
+</div>
+<aside class="notes">
+<p>Timing: 1:15 (cumulative 24:00). The central team buys the acquisition laptop and the light meter, installs the ARIA-ET release with the Tobii software, configures the laptop, and does the hardware sign-off before it ships. Thus each site starts with the same software, the same configuration, and the same light meter. The site does not install software on its own: for each update, IT meets a site team member on a call and walks them through the installation. After each session, the site uploads the session folder, with the raw runs and the BIDS export, to LASSO. We need the raw runs for the data checks. The site supplies the tracker and the stimulus monitor.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section class="slide level2">
+<h2>Software Updates</h2>
+<div class="process-row">
+<ol type="1">
+<li class="fragment"><code>Release</code><br>We publish a signed installer</li>
+<li class="fragment"><code>Call</code><br>IT meets a site team member</li>
+<li class="fragment"><code>Install</code><br>The new version, next to the old one</li>
+<li class="fragment"><code>Check</code><br>Open it; run <code>aria-et sys-info</code></li>
+<li class="fragment"><code>Remove</code><br>Uninstall the old version</li>
+</ol>
+</div>
+<div class="guarantee">
+<p><i class="fa-solid fa-lock" aria-label="lock"></i> <strong>The same software on every laptop.</strong> A lock file (<code>pixi.lock</code>) pins the exact version and build of every package: PsychoPy, the Tobii SDK, DeToX, and the movie decoder. Each installer contains exactly these packages.</p>
+</div>
+<ul>
+<li class="fragment">One release for a full study wave; never update during a session</li>
+</ul>
+<aside class="notes">
+<p>Timing: 1:00 (cumulative 25:00). The current release is 0.1.2. Two laptops with the same release have the same packages, down to the build, so a difference between sites cannot come from the software. The laptop needs no Python and no internet connection for the installation. Three components are outside the lock: Tobii Eye Tracker Manager, Tobii Pro Network Runtime, and the tracker firmware. Each run records their versions in sys_info.json, and IT checks them on the call with sys-info. The new version installs next to the old one, so the site can go back if the new version does not open.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section class="slide level2">
+<h2>Status And Next Steps</h2>
+<ul>
+<li class="fragment">Receive laptops for each site, install software, run checks.</li>
+<li class="fragment">check stimuli onset precision with a photodiode</li>
+<li class="fragment">Ship laptops to sites</li>
+</ul>
+<aside class="notes">
+<p>Timing: 1:00 (cumulative 27:00). Until ABCCT gives permission, the installer and stimuli stay in the lab. The PsychoPy upgrade changes how movies are decoded, so we will re-qualify the stimuli before we release it. Send problems with the run folder and session.log; those two things let me find most causes.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section class="slide level2">
+<h2>Questions?</h2>
+<aside class="notes">
+<p>Timing: 0:30 (cumulative 27:30).</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section></section>
+<section>
+<section class="title-slide slide level1 center">
+<h1>Backup</h1>
+
+</section>
+<section id="backup-calibration" class="slide level2">
+<h2>Calibration Metrics</h2>
+<ul>
+<li class="fragment"><strong>Accuracy</strong>: median angle between gaze and target, in degrees</li>
+<li class="fragment"><strong>Precision</strong>: RMS of sample-to-sample angles (RMS-S2S)</li>
+<li class="fragment"><strong>Data loss</strong>: percentage of samples without valid gaze</li>
+<li class="fragment">Same method as Titta</li>
+<li class="fragment">BIDS: <code>AverageCalibrationError</code>, <code>MaximalCalibrationError</code></li>
+</ul>
+<aside class="notes">
+<p>Backup. Values are reported per eye, as the mean over targets and the worst target. Precision, data loss, and mean accuracy are for information only; only the worst-target accuracy decides the verdict. The threshold is ACCURACY_TOLERANCE_DEG in aria_et/calibration.py.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="backup-calibration-card" class="slide level2">
+<h2>The Calibration Card In The GUI</h2>
+<div class="wide-figure">
+<p><img data-src="figures/gui_calibration_quality_within.png" alt="Latest calibration quality card. The worst accuracy of each eye has a check mark, and the verdict is Within 2.5 degree tolerance: OK to proceed."></p>
+</div>
+<ul>
+<li class="fragment">The Calibration page shows the same table as the stimulus screen</li>
+<li class="fragment"><strong>Calibration history</strong> lists each calibration of the session</li>
+</ul>
+</section>
+<section id="backup-etm" class="slide level2">
+<h2>Eye Tracker Manager Calibration</h2>
+<ul>
+<li class="fragment">The GUI always runs the child-friendly calibration</li>
+<li class="fragment">For a standard Tobii calibration, use the <strong>ARIA-ET Prompt</strong>:</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource bat number-lines code-with-copy"><code class="sourceCode dosbat"><span id="cb2-1"><a aria-label="1"></a>aria-et calibrate<span class="at">-eyetracker</span> -<span class="at">-routine</span> etm -<span class="at">-subject</span> <span class="kw">&lt;</span>label<span class="kw">&gt;</span> --session <span class="kw">&lt;</span>label<span class="kw">&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li class="fragment">Do not calibrate in Eye Tracker Manager directly: ARIA-ET does not record it</li>
+</ul>
+</section>
+<section id="backup-references" class="slide level2">
+<h2>References</h2>
+<div class="source-line">
+<p>Shic, F., Naples, A. J., Barney, E. C., et al.&nbsp;(2022). The Autism Biomarkers Consortium for Clinical Trials: evaluation of a battery of candidate eye-tracking biomarkers for use in autism clinical trials. <em>Molecular Autism, 13</em>, 15.</p>
+<p>Webb, S. J., Shic, F., Murias, M., et al.&nbsp;(2020). Biomarker acquisition and quality control for multi-site studies: the Autism Biomarkers Consortium for Clinical Trials. <em>Frontiers in Integrative Neuroscience, 13</em>, 71. doi:10.3389/fnint.2019.00071</p>
+<p>Shic, F., Naples, A., Barney, E., et al.&nbsp;(2022). ABC-CT Data Acquisition and Analytic Core ET Main Study Manual of Operations, Version 5.1.</p>
+</div>
+
+
+</section></section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+<p>ARIA-EyeTracking</p>
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="../site_libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="../site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="../site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="../site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="../site_libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":false,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"\u003ci class=\"fas fa-gear\">\u003c/i>","content":"\u003cul class=\"slide-menu-items\">\n\u003cli class=\"slide-tool-item active\" data-item=\"0\">\u003ca href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\">\u003ckbd>f\u003c/kbd> Fullscreen\u003c/a>\u003c/li>\n\u003cli class=\"slide-tool-item\" data-item=\"1\">\u003ca href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\">\u003ckbd>s\u003c/kbd> Speaker View\u003c/a>\u003c/li>\n\u003cli class=\"slide-tool-item\" data-item=\"2\">\u003ca href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\">\u003ckbd>o\u003c/kbd> Slide Overview\u003c/a>\u003c/li>\n\u003cli class=\"slide-tool-item\" data-item=\"3\">\u003ca href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\">\u003ckbd>e\u003c/kbd> PDF Export Mode\u003c/a>\u003c/li>\n\u003cli class=\"slide-tool-item\" data-item=\"4\">\u003ca href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\">\u003ckbd>r\u003c/kbd> Scroll View Mode\u003c/a>\u003c/li>\n\u003cli class=\"slide-tool-item\" data-item=\"5\">\u003ca href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\">\u003ckbd>?\u003c/kbd> Keyboard Help\u003c/a>\u003c/li>\n\u003c/ul>"}],"openButton":true,"openButtonLabel":"Slide menu","hideMissingTitles":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: false,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: true,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'fade',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 10,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 10,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script type="text/javascript">
+      // Cache DOM elements (initialized after Reveal.js is ready)
+      let slideMenu = null;
+      let logo = null;
+
+      function updateUiVisibility(slide) {
+        const isTitleSlide = slide.indexh === 0;
+
+        const display = isTitleSlide ? "none" : "block";
+
+        // Guard before setting style to prevent runtime errors
+        if (slideMenu) {
+          slideMenu.style.display = display;
+        }
+        if (logo) {
+          logo.style.display = display;
+        }
+      }
+
+      Reveal.addEventListener("ready", (event) => {
+        // Cache DOM elements once Reveal.js is ready
+        slideMenu = document.querySelector("div.slide-menu-button");
+        logo = document.querySelector("img.slide-logo");
+
+        updateUiVisibility(event);
+      });
+
+      Reveal.addEventListener("slidechanged", (event) => {
+        updateUiVisibility(event);
+      });
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp("https:\/\/scott-huberty\.github\.io\/talks");
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+          window.quartoDecorateExternalLinks = function (root) {
+         var links = (root || window.document).querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+              if (!link.classList.contains('no-external-icon')) {
+                // default icon
+                link.classList.add("external");
+              }
+            }
+          }
+          };
+          window.quartoDecorateExternalLinks(window.document);
+        // Esc closes the popup (WCAG 1.4.13) and focus leaving both trigger and
+        // popup closes it (WCAG 2.4.11); tippy handles neither for interactive popups.
+        const hideOnEscAndFocusOut = {
+          name: 'hideOnEscAndFocusOut',
+          defaultValue: true,
+          fn(instance) {
+            const dismiss = () => {
+              // A show scheduled by the trigger delay would otherwise reopen it
+              instance.clearDelayTimeouts();
+              instance.hide();
+            };
+            const onKeyDown = (event) => {
+              if (event.key !== 'Escape') {
+                return;
+              }
+              // Keep Esc from also reaching page handlers (e.g. reveal.js overview),
+              // except an open reveal.js slide menu, which Esc should close too.
+              // The menu handles keys only when its keyboard option is on.
+              const menuHandlesEsc = window.Reveal?.getPlugin?.('menu')?.isOpen() &&
+                window.Reveal.getConfig().menu?.keyboard !== false;
+              if (!menuHandlesEsc) {
+                event.stopPropagation();
+              }
+              if (instance.popper.contains(window.document.activeElement)) {
+                // Disabled while refocusing so the focus trigger does not reopen it
+                instance.disable();
+                instance.reference.focus();
+                instance.enable();
+              }
+              dismiss();
+            };
+            const onFocusOut = (event) => {
+              const target = event.relatedTarget;
+              if (target && !instance.reference.contains(target) &&
+                  !instance.popper.contains(target)) {
+                dismiss();
+              }
+            };
+            // On the trigger too: a click trigger (code-annotations: select) has no
+            // blur handling. Attached for the instance's lifetime so leaving the
+            // trigger also cancels a show still pending on the trigger delay.
+            instance.reference.addEventListener('focusout', onFocusOut);
+            return {
+              onShow() {
+                window.document.addEventListener('keydown', onKeyDown, true);
+                instance.popper.addEventListener('focusout', onFocusOut);
+              },
+              onHide() {
+                window.document.removeEventListener('keydown', onKeyDown, true);
+                instance.popper.removeEventListener('focusout', onFocusOut);
+              },
+              onDestroy() {
+                instance.reference.removeEventListener('focusout', onFocusOut);
+              },
+            };
+          },
+        };
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+            plugins: [hideOnEscAndFocusOut],
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    
+
+</body></html>

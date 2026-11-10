@@ -1,5 +1,40 @@
 [
   {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Talks",
+    "section": "",
+    "text": "Order By\n      Default\n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Title\n      \n      \n        Author\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\n\nTitle\n\n\n\nEvent\n\n\n\nAuthor\n\n\n\nOrganisation\n\n\n\n\n\n\n\n\n2026-11-10\n\n\nAI-Assisted Science\n\n\nAccelerating research while maintaining rigor\n\n\nScott Huberty, PhD\n\n\nUniversity of Southern California\n\n\n\n\n\n\n2026-11-10\n\n\nDecoding brain activity From EEG in Neurodevelopmental Populations\n\n\nCaveats and Guidelines.\n\n\nScott Huberty, Sydney Jacobs, Charlotte Distefano\n\n\nUniversity of Southern California\n\n\n\n\n\n\n2026-11-10\n\n\nARIA-EyeTracking\n\n\nRunning the ABCCT eye-tracking battery in our lab\n\n\nScott Huberty, PhD\n\n\nUniversity of California Los Angeles\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "aria-et/index.html#backup-calibration",
+    "href": "aria-et/index.html#backup-calibration",
+    "title": "ARIA-EyeTracking",
+    "section": "Calibration Metrics",
+    "text": "Calibration Metrics\n\nAccuracy: median angle between gaze and target, in degrees\nPrecision: RMS of sample-to-sample angles (RMS-S2S)\nData loss: percentage of samples without valid gaze\nSame method as Titta\nBIDS: AverageCalibrationError, MaximalCalibrationError\n\n\nBackup. Values are reported per eye, as the mean over targets and the worst target. Precision, data loss, and mean accuracy are for information only; only the worst-target accuracy decides the verdict. The threshold is ACCURACY_TOLERANCE_DEG in aria_et/calibration.py."
+  },
+  {
+    "objectID": "aria-et/index.html#backup-calibration-card",
+    "href": "aria-et/index.html#backup-calibration-card",
+    "title": "ARIA-EyeTracking",
+    "section": "The Calibration Card In The GUI",
+    "text": "The Calibration Card In The GUI\n\n\n\n\nThe Calibration page shows the same table as the stimulus screen\nCalibration history lists each calibration of the session"
+  },
+  {
+    "objectID": "aria-et/index.html#backup-etm",
+    "href": "aria-et/index.html#backup-etm",
+    "title": "ARIA-EyeTracking",
+    "section": "Eye Tracker Manager Calibration",
+    "text": "Eye Tracker Manager Calibration\n\nThe GUI always runs the child-friendly calibration\nFor a standard Tobii calibration, use the ARIA-ET Prompt:\n\naria-et calibrate-eyetracker --routine etm --subject &lt;label&gt; --session &lt;label&gt;\n\nDo not calibrate in Eye Tracker Manager directly: ARIA-ET does not record it"
+  },
+  {
+    "objectID": "aria-et/index.html#backup-references",
+    "href": "aria-et/index.html#backup-references",
+    "title": "ARIA-EyeTracking",
+    "section": "References",
+    "text": "References\n\nShic, F., Naples, A. J., Barney, E. C., et al. (2022). The Autism Biomarkers Consortium for Clinical Trials: evaluation of a battery of candidate eye-tracking biomarkers for use in autism clinical trials. Molecular Autism, 13, 15.\nWebb, S. J., Shic, F., Murias, M., et al. (2020). Biomarker acquisition and quality control for multi-site studies: the Autism Biomarkers Consortium for Clinical Trials. Frontiers in Integrative Neuroscience, 13, 71. doi:10.3389/fnint.2019.00071\nShic, F., Naples, A., Barney, E., et al. (2022). ABC-CT Data Acquisition and Analytic Core ET Main Study Manual of Operations, Version 5.1."
+  },
+  {
     "objectID": "gatlinburg-2026/index.html#backup-baseline",
     "href": "gatlinburg-2026/index.html#backup-baseline",
     "title": "Decoding brain activity From EEG in Neurodevelopmental Populations",
@@ -33,12 +68,5 @@
     "title": "Decoding brain activity From EEG in Neurodevelopmental Populations",
     "section": "References",
     "text": "References\n\nBayet, L., et al. (2020). Temporal dynamics of visual representations in the infant brain. Developmental Cognitive Neuroscience, 45, 100860.\nGrootswagers, T., Wardle, S. G., & Carlson, T. A. (2017). Decoding dynamic brain patterns from evoked responses. Journal of Cognitive Neuroscience, 29(4), 677–697. doi:10.1162/jocn_a_01068\nGwilliams, L., King, J.-R., Marantz, A., & Poeppel, D. (2022). Neural dynamics of phoneme sequences reveal position-invariant code for content and order. Nature Communications, 13, 6606.\nvan Driel, J., Olivers, C. N. L., & Fahrenfort, J. J. (2021). High-pass filtering artifacts in multivariate classification of neural time series data. Journal of Neuroscience Methods, 352, 109080.\nVaroquaux, G., et al. (2017). Assessing and tuning brain decoders: Cross-validation, caveats, and guidelines. NeuroImage, 145, 166–179. doi:10.1016/j.neuroimage.2016.10.038"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Talks",
-    "section": "",
-    "text": "Order By\n      Default\n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Title\n      \n      \n        Author\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\n\nTitle\n\n\n\nEvent\n\n\n\nAuthor\n\n\n\nOrganisation\n\n\n\n\n\n\n\n\n2026-10-08\n\n\nAI-Assisted Science\n\n\nAccelerating research while maintaining rigor\n\n\nScott Huberty, PhD\n\n\nUniversity of Southern California\n\n\n\n\n\n\n2026-10-08\n\n\nDecoding brain activity From EEG in Neurodevelopmental Populations\n\n\nCaveats and Guidelines.\n\n\nScott Huberty, Sydney Jacobs, Charlotte Distefano\n\n\nUniversity of Southern California\n\n\n\n\n\n\nNo matching items"
   }
 ]
